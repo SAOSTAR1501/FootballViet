@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login_Page"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="FootballViet"
+        android:textSize="40sp"
+        android:background="#009900"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/edtHo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:hint="Họ"
+        android:layout_marginTop="100dp"
+        android:paddingLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"/>
+    <EditText
+        android:id="@+id/edtTen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:hint="Tên"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"/>
+
+    <EditText
+        android:id="@+id/edtDiaChi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:hint="Địa chỉ"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"/>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Bạn là: "
+            android:textSize="18sp"
+            android:layout_gravity="center"/>
+        <RadioGroup
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/rbCaNhan"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Cá nhân"/>
+            <RadioButton
+                android:id="@+id/rbHostStadium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Chủ sân"
+                android:layout_marginLeft="20dp"/>
+        </RadioGroup>
+    </TableRow>
+    <EditText
+        android:id="@+id/edtMatKhau"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:hint="Mật khẩu"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"/><EditText
+        android:id="@+id/edtNhapLaiMatKhau"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:hint="Nhập lại mật khẩu"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"/>
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đăng ký"
+        android:textSize="22sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"/>
+</LinearLayout>
