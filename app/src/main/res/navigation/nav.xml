@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/newFeedFragment">
+
+    <fragment
+        android:id="@+id/newFeedFragment"
+        android:name="group2.ptdacntt.footballviet.fragments.NewFeedFragment"
+        android:label="fragment_new_feed"
+        tools:layout="@layout/fragment_new_feed" />
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="group2.ptdacntt.footballviet.fragments.UserFragment"
+        android:label="fragment_user"
+        tools:layout="@layout/fragment_user" />
+    <fragment
+        android:id="@+id/pitchFragment"
+        android:name="group2.ptdacntt.footballviet.fragments.PitchFragment"
+        android:label="fragment_pitch"
+        tools:layout="@layout/fragment_pitch" />
+</navigation>

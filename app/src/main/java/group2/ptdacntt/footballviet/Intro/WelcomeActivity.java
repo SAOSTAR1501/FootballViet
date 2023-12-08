@@ -1,5 +1,6 @@
 package group2.ptdacntt.footballviet.Intro;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -34,6 +35,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private Button mBtnNext;
     private PrefManager mPrefManager;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

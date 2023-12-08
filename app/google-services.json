@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "422563937696",
+    "firebase_url": "https://footballviet-10f38-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "footballviet-10f38",
+    "storage_bucket": "footballviet-10f38.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422563937696:android:016adaec9c1319d1f878c5",
+        "android_client_info": {
+          "package_name": "group2.ptdacntt.footballviet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSPbID44mQGa-M227NFZelDOy7MoqMu10"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
