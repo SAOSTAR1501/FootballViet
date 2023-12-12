@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login_Page"
+    tools:context=".Login"
     android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
@@ -52,5 +52,19 @@
         android:textColorLink="#009900"
         android:text="Forgot password?"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Or"
+        android:textAlignment="center"
+        android:textSize="@dimen/dp16"/>
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:textSize="22sp"
+        android:layout_gravity="center"
         android:layout_marginTop="10dp"/>
 </LinearLayout>

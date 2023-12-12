@@ -13,8 +13,8 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="@dimen/_minus2sdp"
-            android:layout_height="@dimen/_minus2sdp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:src="@drawable/ic_launcher_background"/>
 
         <TextView
@@ -22,19 +22,19 @@
             android:layout_height="wrap_content"
             android:text="@string/slide_2_title"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/_minus2sdp"
+            android:textSize="30sp"
             android:textStyle="bold"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:paddingLeft="@dimen/_minus2sdp"
-            android:paddingRight="@dimen/_minus2sdp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:text="@string/slide_2_desc"
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/_minus2sdp"/>
+            android:textSize="16sp"/>
 
     </LinearLayout>
 </RelativeLayout>
