@@ -16,10 +16,10 @@
             android:name=".ContentApp.Dashboard"
             android:exported="false" />
         <activity
-            android:name=".SignUp_Page"
+            android:name=".SignUp"
             android:exported="false" />
         <activity
-            android:name=".Login_Page"
+            android:name=".Login"
             android:exported="false" />
         <activity
             android:name=".Intro.WelcomeActivity"

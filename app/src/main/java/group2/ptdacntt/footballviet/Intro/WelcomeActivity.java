@@ -21,7 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import group2.ptdacntt.footballviet.ContentApp.Dashboard;
+import group2.ptdacntt.footballviet.Login;
 import group2.ptdacntt.footballviet.R;
 
 public class WelcomeActivity extends AppCompatActivity {
@@ -154,9 +154,8 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     private void launchHomeScreen() {
-        Intent intent = new Intent(this, Dashboard.class);
+        Intent intent = new Intent(this, Login.class);
         startActivity(intent);
-        finish();
     }
 
     public class IntroViewPagerAdapter extends PagerAdapter {

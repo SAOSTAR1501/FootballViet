@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login_Page"
+    tools:context=".Login"
     android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
@@ -18,17 +18,17 @@
         android:textStyle="bold"/>
 
     <EditText
-        android:id="@+id/edtHo"
+        android:id="@+id/edtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="22sp"
-        android:hint="Họ"
+        android:hint="Email"
         android:layout_marginTop="100dp"
         android:paddingLeft="20dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"/>
     <EditText
-        android:id="@+id/edtTen"
+        android:id="@+id/edtUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="22sp"
@@ -39,11 +39,21 @@
         android:layout_marginLeft="10dp"/>
 
     <EditText
-        android:id="@+id/edtDiaChi"
+        android:id="@+id/edtAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="22sp"
         android:hint="Địa chỉ"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"/>
+    <EditText
+        android:id="@+id/edtPhoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:hint="Điện thoại"
         android:layout_marginTop="10dp"
         android:paddingLeft="20dp"
         android:layout_marginRight="10dp"
@@ -61,11 +71,12 @@
             android:textSize="18sp"
             android:layout_gravity="center"/>
         <RadioGroup
+            android:id="@+id/rbRole"
             android:orientation="horizontal">
             <RadioButton
-                android:id="@+id/rbCaNhan"
+                android:id="@+id/rbPerson"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Cá nhân"/>
             <RadioButton
                 android:id="@+id/rbHostStadium"
@@ -76,7 +87,7 @@
         </RadioGroup>
     </TableRow>
     <EditText
-        android:id="@+id/edtMatKhau"
+        android:id="@+id/edtPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="22sp"
@@ -84,8 +95,9 @@
         android:layout_marginTop="10dp"
         android:paddingLeft="20dp"
         android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"/><EditText
-        android:id="@+id/edtNhapLaiMatKhau"
+        android:layout_marginLeft="10dp"/>
+    <EditText
+        android:id="@+id/edtConfirmPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="22sp"
@@ -101,5 +113,5 @@
         android:text="Đăng ký"
         android:textSize="22sp"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="20dp"/>
 </LinearLayout>
