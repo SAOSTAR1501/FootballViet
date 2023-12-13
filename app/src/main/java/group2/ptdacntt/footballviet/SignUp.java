@@ -3,6 +3,7 @@ package group2.ptdacntt.footballviet;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -16,15 +17,17 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import group2.ptdacntt.footballviet.ContentApp.Dashboard;
 import group2.ptdacntt.footballviet.Models.User;
 
 public class SignUp extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference usersRef;
-    EditText edtEmail, edtUsername, edtAddress, edtPhoneNumber, edtPassword, edtConfirmPassword;
+    EditText edtEmail, edtFullName, edtUsername, edtAddress, edtPhoneNumber, edtPassword, edtConfirmPassword;
     Button btnSignUp;
     RadioButton rbPerson, rbHostStadium;
     RadioGroup rbRole;
@@ -48,6 +51,7 @@ public class SignUp extends AppCompatActivity {
 
     private void addAccount() {
         String email = edtEmail.getText().toString().trim();
+        String fullName = edtFullName.getText().toString().trim();
         String username = edtUsername.getText().toString().trim();
         String address = edtAddress.getText().toString().trim();
         String phoneNumber = edtPhoneNumber.getText().toString().trim();
@@ -57,7 +61,7 @@ public class SignUp extends AppCompatActivity {
         String Role = getSelectedRole();
 
         if (TextUtils.isEmpty(email) || TextUtils.isEmpty(username) || TextUtils.isEmpty(address)
-                || TextUtils.isEmpty(phoneNumber) || (TextUtils.isEmpty(Role)) || TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword)) {
+                || TextUtils.isEmpty(phoneNumber) || (TextUtils.isEmpty(Role)) || TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword) ||TextUtils.isEmpty(fullName)) {
             Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin.", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -74,10 +78,11 @@ public class SignUp extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Đăng ký thành công, lấy ID người dùng
+
                             String userId = mAuth.getCurrentUser().getUid();
 
                             // Lưu thông tin người dùng vào Firebase Realtime Database
-                            saveUserInfoToFirebase(userId, email,password, username, address, Role, phoneNumber);
+                            saveUserInfoToFirebase(userId, email,password, username, fullName, address, Role, phoneNumber);
                         } else {
                             // Đăng ký không thành công, xử lý lỗi
                             Toast.makeText(SignUp.this, "Đăng ký không thành công.", Toast.LENGTH_SHORT).show();
@@ -86,9 +91,9 @@ public class SignUp extends AppCompatActivity {
                 });
     }
 
-    private void saveUserInfoToFirebase(String userId, String email, String password, String username, String address, String role, String phoneNumber) {
+    private void saveUserInfoToFirebase(String userId, String email, String password, String username, String fullName, String address, String role, String phoneNumber) {
         // Tạo đối tượng User
-        User user = new User(userId, email, password, username, address, role, phoneNumber);
+        User user = new User(userId, email, password, username,fullName, address, role, phoneNumber);
 
         // Lưu thông tin người dùng vào Firebase Realtime Database
         usersRef.child(userId).setValue(user)
@@ -97,8 +102,8 @@ public class SignUp extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(SignUp.this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
-                            // Chuyển đến màn hình đăng nhập hoặc màn hình chính của ứng dụng
-                            // Tùy thuộc vào logic của bạn
+                            startActivity(new Intent(SignUp.this, Dashboard.class));
+                            finishAffinity();
                         } else {
                             Toast.makeText(SignUp.this, "Lưu thông tin người dùng không thành công.", Toast.LENGTH_SHORT).show();
                         }
@@ -121,6 +126,7 @@ public class SignUp extends AppCompatActivity {
     private void addControls() {
         edtEmail = findViewById(R.id.edtEmail);
         edtUsername = findViewById(R.id.edtUsername);
+        edtFullName = findViewById(R.id.edtFullName);
         edtAddress = findViewById(R.id.edtAddress);
         edtPhoneNumber = findViewById(R.id.edtPhoneNumber);
         edtPassword = findViewById(R.id.edtPassword);

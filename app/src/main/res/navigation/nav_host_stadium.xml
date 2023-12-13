@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_host_stadium"
+    app:startDestination="@id/managePosts2">
+
+    <fragment
+        android:id="@+id/managePosts2"
+        android:name="group2.ptdacntt.footballviet.fragments.ForHost.ManagePosts"
+        android:label="fragment_manage_posts2"
+        tools:layout="@layout/fragment_manage_posts2" />
+    <fragment
+        android:id="@+id/manageStadiums2"
+        android:name="group2.ptdacntt.footballviet.fragments.ForHost.ManageStadiums"
+        android:label="fragment_manage_stadiums2"
+        tools:layout="@layout/fragment_manage_stadiums2" />
+    <fragment
+        android:id="@+id/infoHostStadium"
+        android:name="group2.ptdacntt.footballviet.fragments.ForHost.InfoHostStadium"
+        android:label="fragment_info_host_stadium"
+        tools:layout="@layout/fragment_info_host_stadium" />
+</navigation>

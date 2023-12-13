@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_admin"
+    app:startDestination="@id/managePosts">
+
+    <fragment
+        android:id="@+id/managePosts"
+        android:name="group2.ptdacntt.footballviet.fragments.ForAdmin.ManagePosts"
+        android:label="fragment_manage_posts"
+        tools:layout="@layout/fragment_manage_posts" />
+    <fragment
+        android:id="@+id/manageStadiums"
+        android:name="group2.ptdacntt.footballviet.fragments.ForAdmin.ManageStadiums"
+        android:label="fragment_manage_stadiums"
+        tools:layout="@layout/fragment_manage_stadiums" />
+    <fragment
+        android:id="@+id/manageUsers"
+        android:name="group2.ptdacntt.footballviet.fragments.ForAdmin.ManageUsers"
+        android:label="fragment_manage_users"
+        tools:layout="@layout/fragment_manage_users" />
+    <fragment
+        android:id="@+id/infoAdmin"
+        android:name="group2.ptdacntt.footballviet.fragments.ForAdmin.InfoAdmin"
+        android:label="fragment_info_admin"
+        tools:layout="@layout/fragment_info_admin" />
+</navigation>

@@ -23,16 +23,16 @@
         android:layout_height="wrap_content"
         android:textSize="22sp"
         android:hint="Email"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="20dp"
         android:paddingLeft="20dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"/>
     <EditText
-        android:id="@+id/edtUsername"
+        android:id="@+id/edtFullName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="22sp"
-        android:hint="Tên"
+        android:hint="Họ tên"
         android:layout_marginTop="10dp"
         android:paddingLeft="20dp"
         android:layout_marginRight="10dp"
@@ -87,6 +87,15 @@
         </RadioGroup>
     </TableRow>
     <EditText
+        android:id="@+id/edtUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Username"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:paddingLeft="20dp"
+        android:textSize="22sp"/>
+    <EditText
         android:id="@+id/edtPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -106,12 +115,13 @@
         android:paddingLeft="20dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"/>
+
     <Button
         android:id="@+id/btnSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginTop="20dp"
         android:text="Đăng ký"
-        android:textSize="22sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"/>
+        android:textSize="22sp" />
 </LinearLayout>

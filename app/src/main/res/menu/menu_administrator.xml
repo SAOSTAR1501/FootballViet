@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:icon="@drawable/post"
+        android:id="@+id/managePosts"
+        app:showAsAction="always"
+        android:title="New Feed"/>
+    <item android:icon="@drawable/sanbong"
+        android:id="@+id/manageStadiums"
+        app:showAsAction="always"
+        android:title="Pitch"/>
+    <item android:icon="@drawable/user_management"
+        android:id="@+id/manageUsers"
+        app:showAsAction="always"
+        android:title="Users"/>
+    <item android:icon="@drawable/user"
+        android:id="@+id/infoAdmin"
+        app:showAsAction="always"
+        android:title="Info"/>
+</menu>
