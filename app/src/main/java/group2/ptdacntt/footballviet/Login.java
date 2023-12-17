@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,7 +40,6 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
-
         addControls();
         addEvents();
     }
@@ -52,7 +52,6 @@ public class Login extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,16 +59,13 @@ public class Login extends AppCompatActivity {
             }
         });
     }
-
     private void login() {
         String email = edtUsername.getText().toString().trim();
         String password = edtPassword.getText().toString().trim();
-
         if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
             Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin.", Toast.LENGTH_SHORT).show();
             return;
         }
-
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -77,14 +73,10 @@ public class Login extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             if (user != null) {
-                                // Lấy UID của người dùng đăng nhập
                                 String uid = user.getUid();
-
-                                // Kiểm tra vai trò của người dùng
                                 checkUserRole(uid);
                             }
                         } else {
-                            // Đăng nhập không thành công, xử lý lỗi
                             Toast.makeText(Login.this, "Đăng nhập không thành công.", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -109,7 +101,6 @@ public class Login extends AppCompatActivity {
                         startActivity(new Intent(Login.this, Dashboard.class));
                     }
 
-                    finishAffinity();
                 }
             }
 
@@ -118,6 +109,7 @@ public class Login extends AppCompatActivity {
                 Toast.makeText(Login.this, "Không thể đăng nhập.", Toast.LENGTH_SHORT).show();
             }
         });
+        finishAffinity();
     }
 
     private void addControls() {
@@ -127,7 +119,6 @@ public class Login extends AppCompatActivity {
         tvForgotPassword = findViewById(R.id.tvForgotPassword);
         tvForgotPassword.setPaintFlags(tvForgotPassword.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
         btnSignUp = findViewById(R.id.btnSignUp);
-
         mAuth = FirebaseAuth.getInstance();
     }
 }

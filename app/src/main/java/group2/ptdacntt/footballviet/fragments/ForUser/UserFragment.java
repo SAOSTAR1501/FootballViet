@@ -1,4 +1,4 @@
-package group2.ptdacntt.footballviet.fragments;
+package group2.ptdacntt.footballviet.fragments.ForUser;
 
 import android.os.Bundle;
 

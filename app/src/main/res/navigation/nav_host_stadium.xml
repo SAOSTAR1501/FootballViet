@@ -9,7 +9,11 @@
         android:id="@+id/managePosts2"
         android:name="group2.ptdacntt.footballviet.fragments.ForHost.ManagePosts"
         android:label="fragment_manage_posts2"
-        tools:layout="@layout/fragment_manage_posts2" />
+        tools:layout="@layout/fragment_manage_posts2" >
+        <action
+            android:id="@+id/action_managePosts2_to_welcome"
+            app:destination="@id/welcome" />
+    </fragment>
     <fragment
         android:id="@+id/manageStadiums2"
         android:name="group2.ptdacntt.footballviet.fragments.ForHost.ManageStadiums"
@@ -20,4 +24,9 @@
         android:name="group2.ptdacntt.footballviet.fragments.ForHost.InfoHostStadium"
         android:label="fragment_info_host_stadium"
         tools:layout="@layout/fragment_info_host_stadium" />
+    <activity
+        android:id="@+id/welcome"
+        android:name="group2.ptdacntt.footballviet.Welcome"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
 </navigation>

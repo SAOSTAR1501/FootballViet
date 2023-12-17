@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +17,26 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import group2.ptdacntt.footballviet.ContentApp.Dashboard;
+import group2.ptdacntt.footballviet.HostStadiumActivity.Dashboard_Host_Stadium;
 import group2.ptdacntt.footballviet.Login;
+import group2.ptdacntt.footballviet.Models.User;
 import group2.ptdacntt.footballviet.R;
+import group2.ptdacntt.footballviet.Welcome;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -91,6 +105,37 @@ public class WelcomeActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference();
+        FirebaseAuth auth=FirebaseAuth.getInstance();
+        FirebaseUser user= auth.getCurrentUser();
+        if(user!=null){
+            databaseReference.child("users").child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    User user1=snapshot.getValue(User.class);
+                    if(user1.getRole().equals("Cá nhân")){
+                        Intent intent=new Intent(WelcomeActivity.this, Dashboard.class);
+                        startActivity(intent);
+                    }else if(user1.getRole().equals("Chủ sân")){
+                        Intent intent=new Intent(WelcomeActivity.this, Dashboard_Host_Stadium.class);
+                        startActivity(intent);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }else{
+            Intent intent=new Intent(WelcomeActivity.this, Login.class);
+            startActivity(intent);
+        }
     }
 
     private ViewPager.OnPageChangeListener mViewPagerChangeListener = new ViewPager.OnPageChangeListener() {

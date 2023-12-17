@@ -7,17 +7,30 @@
 
     <fragment
         android:id="@+id/newFeedFragment"
-        android:name="group2.ptdacntt.footballviet.fragments.NewFeedFragment"
+        android:name="group2.ptdacntt.footballviet.fragments.ForUser.NewFeedFragment"
         android:label="fragment_new_feed"
-        tools:layout="@layout/fragment_new_feed" />
+        tools:layout="@layout/fragment_new_feed" >
+        <action
+            android:id="@+id/action_newFeedFragment_to_postFragment"
+            app:destination="@id/postFragment" />
+    </fragment>
     <fragment
         android:id="@+id/userFragment"
-        android:name="group2.ptdacntt.footballviet.fragments.UserFragment"
+        android:name="group2.ptdacntt.footballviet.fragments.ForUser.UserFragment"
         android:label="fragment_user"
         tools:layout="@layout/fragment_user" />
     <fragment
         android:id="@+id/pitchFragment"
-        android:name="group2.ptdacntt.footballviet.fragments.PitchFragment"
+        android:name="group2.ptdacntt.footballviet.fragments.ForUser.PitchFragment"
         android:label="fragment_pitch"
         tools:layout="@layout/fragment_pitch" />
+    <fragment
+        android:id="@+id/postFragment"
+        android:name="group2.ptdacntt.footballviet.fragments.ForUser.PostFragment"
+        android:label="fragment_post"
+        tools:layout="@layout/fragment_post" >
+        <action
+            android:id="@+id/action_postFragment_to_newFeedFragment"
+            app:destination="@id/newFeedFragment" />
+    </fragment>
 </navigation>

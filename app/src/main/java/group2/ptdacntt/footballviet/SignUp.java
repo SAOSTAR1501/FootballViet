@@ -135,7 +135,6 @@ public class SignUp extends AppCompatActivity {
         rbPerson = findViewById(R.id.rbPerson);
         rbHostStadium = findViewById(R.id.rbHostStadium);
         rbRole = findViewById(R.id.rbRole);
-
         mAuth = FirebaseAuth.getInstance();
         usersRef = FirebaseDatabase.getInstance().getReference("users");
     }

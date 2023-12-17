@@ -8,6 +8,8 @@ import androidx.navigation.ui.NavigationUI;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import group2.ptdacntt.footballviet.R;
 
@@ -31,5 +33,8 @@ public class Dashboard_Host_Stadium extends AppCompatActivity {
                 .findFragmentById(R.id.nav_stadium_host_fragment);
         NavController navController=navHostFragment.getNavController();
         NavigationUI.setupWithNavController(bnvHostStadium, navController);
+        FirebaseAuth auth=FirebaseAuth.getInstance();
+        FirebaseUser user= auth.getCurrentUser();
+        auth.signOut();
     }
 }

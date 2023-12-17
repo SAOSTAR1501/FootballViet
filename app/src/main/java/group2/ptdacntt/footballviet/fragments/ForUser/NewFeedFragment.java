@@ -1,12 +1,36 @@
-package group2.ptdacntt.footballviet.fragments;
+package group2.ptdacntt.footballviet.fragments.ForUser;
 
+import static android.app.Activity.RESULT_OK;
+
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import group2.ptdacntt.footballviet.R;
 
@@ -25,6 +49,10 @@ public class NewFeedFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private static final int PICK_IMAGE_REQUEST = 1;
+    RecyclerView rcv;
+    Button btnPost;
+    NavController navController;
 
     public NewFeedFragment() {
         // Required empty public constructor
@@ -63,4 +91,19 @@ public class NewFeedFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_new_feed, container, false);
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        rcv=view.findViewById(R.id.rcvNewFeed);
+        btnPost=view.findViewById(R.id.btnPost);
+        navController= NavHostFragment.findNavController(NewFeedFragment.this);
+        btnPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_newFeedFragment_to_postFragment);
+            }
+        });
+    }
+
 }

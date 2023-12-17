@@ -17,21 +17,14 @@
         <activity
             android:name=".HostStadiumActivity.Dashboard_Host_Stadium"
             android:exported="false">
-
         </activity>
         <activity
             android:name=".Administrator.Dashboard_Administrator"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
         <activity
             android:name=".ContentApp.Dashboard"
-            android:exported="false" >
-
+            android:exported="false">
         </activity>
         <activity
             android:name=".SignUp"
@@ -41,7 +34,12 @@
             android:exported="false" />
         <activity
             android:name=".Intro.WelcomeActivity"
-            android:exported="false"></activity>
-    </application>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
 </manifest>
