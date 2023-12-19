@@ -32,7 +32,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import group2.ptdacntt.footballviet.Models.NewFeed;
 import group2.ptdacntt.footballviet.R;
@@ -120,6 +122,9 @@ public class PostFragment extends Fragment {
         int month = calendar.get(Calendar.MONTH) + 1;
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         date=day+"-"+month+"-"+year;
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+        Date currentTime = calendar.getTime();
+        String time = timeFormat.format(currentTime);
         btnChoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -155,7 +160,7 @@ public class PostFragment extends Fragment {
                                             String gio=edtGio.getText().toString().trim();
                                             String content=edtContent.getText().toString().trim();
                                             NewFeed newFeed=new NewFeed(user.getEmail() + "/"+user.getUid()+date,name,san,ngay,gio,content,down);
-                                            databaseReference.child("users").child(user.getUid()).child("posts").child(user.getUid()+date).setValue(newFeed);
+                                            databaseReference.child("users").child(user.getUid()).child("posts").child(user.getUid()+date+time).setValue(newFeed);
                                         }
                                     });
                                 }
