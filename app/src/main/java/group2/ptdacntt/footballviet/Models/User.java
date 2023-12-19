@@ -9,6 +9,7 @@ public class User {
     private String address;
     private String role;
     private String phoneNumber;
+    private String profileimage;
 
 
     public User(String userId, String email, String password, String username, String fullName, String address, String role, String phoneNumber) {
@@ -21,6 +22,8 @@ public class User {
         this.role = role;
         this.phoneNumber = phoneNumber;
     }
+
+
 
     public User() {
     }
@@ -87,5 +90,13 @@ public class User {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getProfileimage() {
+        return profileimage;
+    }
+
+    public void setProfileimage(String profileimage) {
+        this.profileimage = profileimage;
     }
 }

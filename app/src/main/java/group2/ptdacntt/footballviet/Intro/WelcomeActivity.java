@@ -31,6 +31,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import group2.ptdacntt.footballviet.Administrator.Dashboard_Administrator;
 import group2.ptdacntt.footballviet.ContentApp.Dashboard;
 import group2.ptdacntt.footballviet.HostStadiumActivity.Dashboard_Host_Stadium;
 import group2.ptdacntt.footballviet.Login;
@@ -124,6 +125,8 @@ public class WelcomeActivity extends AppCompatActivity {
                     }else if(user1.getRole().equals("Chủ sân")){
                         Intent intent=new Intent(WelcomeActivity.this, Dashboard_Host_Stadium.class);
                         startActivity(intent);
+                    } else if (user1.getRole().equals("Admin")) {
+                        startActivity(new Intent(WelcomeActivity.this, Dashboard_Administrator.class));
                     }
                 }
 

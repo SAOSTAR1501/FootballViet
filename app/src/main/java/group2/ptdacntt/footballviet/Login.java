@@ -27,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import group2.ptdacntt.footballviet.Administrator.Dashboard_Administrator;
 import group2.ptdacntt.footballviet.ContentApp.Dashboard;
+import group2.ptdacntt.footballviet.HostStadiumActivity.Dashboard_Host_Stadium;
 import group2.ptdacntt.footballviet.Models.User;
 
 public class Login extends AppCompatActivity {
@@ -96,8 +97,10 @@ public class Login extends AppCompatActivity {
                     if (user != null && user.getRole().equals("administrator")) {
                         // Người dùng là admin, chuyển đến màn hình admin
                         startActivity(new Intent(Login.this, Dashboard_Administrator.class));
-                    } else {
+                    } else if (user != null && user.getRole().equals("Chủ sân")) {
                         // Người dùng là user, chuyển đến màn hình user
+                        startActivity(new Intent(Login.this, Dashboard_Host_Stadium.class));
+                    } else {
                         startActivity(new Intent(Login.this, Dashboard.class));
                     }
 
