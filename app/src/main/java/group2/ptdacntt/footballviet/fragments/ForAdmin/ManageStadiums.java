@@ -2,13 +2,33 @@ package group2.ptdacntt.footballviet.fragments.ForAdmin;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import group2.ptdacntt.footballviet.Models.Stadium;
 import group2.ptdacntt.footballviet.R;
+import group2.ptdacntt.footballviet.adapters.NewStadiumAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +45,14 @@ public class ManageStadiums extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    NavController navController;
+
+    RecyclerView rcv;
+    Button btnPost;
+    List<Stadium> list;
+    NewStadiumAdapter adapter;
+    FirebaseAuth auth;
+    FirebaseUser user;
 
     public ManageStadiums() {
         // Required empty public constructor
@@ -62,5 +90,56 @@ public class ManageStadiums extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_manage_stadiums, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        navController= NavHostFragment.findNavController(ManageStadiums.this);
+        rcv = view.findViewById(R.id.rcvNewStadium);
+        btnPost = view.findViewById(R.id.btnAddStadium);
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        btnPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.action_manageStadiums3_to_newStadiumFragment2);
+            }
+        });
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        rcv.setLayoutManager(linearLayoutManager);
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users");
+
+        userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot usersSnapshot) {
+                list = new ArrayList<>();
+                for(DataSnapshot userSnapshot: usersSnapshot.getChildren()) {
+                    DatabaseReference stadiumsRef = FirebaseDatabase.getInstance().getReference("stadiums");
+                    stadiumsRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot stadiumsSnapshot) {
+                            for (DataSnapshot stadiumSnapshot : stadiumsSnapshot.getChildren()) {
+                                Stadium stadium = stadiumSnapshot.getValue(Stadium.class);
+                                list.add(stadium);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        adapter = new NewStadiumAdapter(list, getContext());
+        rcv.setAdapter(adapter);
     }
 }

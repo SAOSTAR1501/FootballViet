@@ -5,35 +5,13 @@
     android:layout_margin="@dimen/_5sdp"
     android:layout_height="wrap_content">
     <TextView
-        android:id="@+id/tvUserName"
-        android:text="buiducluong2602@gmail.com"
+        android:id="@+id/txtUserName"
+        android:text="Tên chủ sân"
         android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="@dimen/_17sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-    <LinearLayout
-        android:layout_marginTop="@dimen/_5sdp"
-        android:orientation="horizontal"
-        android:weightSum="10"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:text="Tên đội:"
-            android:textSize="@dimen/_13sdp"
-            android:textColor="@color/black"
-            android:layout_weight="3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"/>
-        <TextView
-            android:id="@+id/tvTenDoi"
-            android:text="minh quoc"
-            android:layout_width="0dp"
-            android:layout_weight="7"
-            android:textSize="@dimen/_13sdp"
-            android:textColor="@color/black"
-            android:layout_height="match_parent"/>
-    </LinearLayout>
     <LinearLayout
         android:layout_marginTop="@dimen/_5sdp"
         android:orientation="horizontal"
@@ -48,8 +26,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
         <TextView
-            android:id="@+id/tvSan"
-            android:text="minh quoc"
+            android:id="@+id/txtTenSan"
+            android:text="Minh Khai"
             android:layout_width="0dp"
             android:layout_weight="7"
             android:textSize="@dimen/_13sdp"
@@ -63,15 +41,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:text="Ngày:"
+            android:text="Địa chỉ:"
             android:textSize="@dimen/_13sdp"
             android:textColor="@color/black"
             android:layout_weight="3"
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
         <TextView
-            android:id="@+id/tvNgay"
-            android:text="gio"
+            android:id="@+id/txtDiaChi"
+            android:text="Bắc Từ Liêm"
             android:layout_width="0dp"
             android:layout_weight="7"
             android:textSize="@dimen/_13sdp"
@@ -85,54 +63,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:text="Giờ:"
+            android:text="Giá:"
             android:textSize="@dimen/_13sdp"
             android:textColor="@color/black"
             android:layout_weight="3"
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
         <TextView
-            android:id="@+id/tvGio"
-            android:text="minh quoc"
+            android:id="@+id/txtGia"
+            android:text="600000đ"
             android:layout_width="0dp"
             android:layout_weight="7"
             android:textSize="@dimen/_13sdp"
             android:textColor="@color/black"
             android:layout_height="match_parent"/>
     </LinearLayout>
-    <LinearLayout
-        android:layout_marginTop="@dimen/_5sdp"
-        android:orientation="horizontal"
-        android:weightSum="10"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:text="Nội dung:"
-            android:textSize="@dimen/_13sdp"
-            android:textColor="@color/black"
-            android:layout_weight="3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"/>
-        <TextView
-            android:id="@+id/tvNoiDung"
-            android:text="minh quoc"
-            android:layout_width="0dp"
-            android:layout_weight="7"
-            android:textSize="@dimen/_13sdp"
-            android:textColor="@color/black"
-            android:layout_height="match_parent"/>
-    </LinearLayout>
+
     <ImageView
-        android:id="@+id/imgAnhDoi"
+        android:id="@+id/imgAnhSan"
         android:layout_marginTop="@dimen/_10sdp"
         android:src="@drawable/ic_launcher_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button
-        android:id="@+id/btnNhanTin"
-        android:text="Nhắn tin"
+        android:id="@+id/btnDatSan"
+        android:text="Đặt sân ngay"
         android:textSize="@dimen/_15sdp"
-        android:textColor="#fff"
+        android:textColor="@color/white"
         android:layout_marginTop="@dimen/_10sdp"
         android:background="#4CAF50"
         android:layout_width="match_parent"

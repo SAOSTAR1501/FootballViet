@@ -2,15 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:icon="@drawable/post"
-        android:id="@+id/managePosts2"
+        android:id="@+id/newFeedFragment2"
         app:showAsAction="always"
         android:title="New Feed"/>
     <item android:icon="@drawable/sanbong"
-        android:id="@+id/manageStadiums2"
+        android:id="@+id/manageStadiums3"
         app:showAsAction="always"
         android:title="Pitch"/>
     <item android:icon="@drawable/user"
-        android:id="@+id/infoHostStadium"
+        android:id="@+id/userFragment2"
         app:showAsAction="always"
         android:title="User"/>
 </menu>

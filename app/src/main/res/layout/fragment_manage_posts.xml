@@ -6,9 +6,19 @@
     tools:context=".fragments.ForAdmin.ManagePosts">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvNewStadium"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Manage posts" />
+        android:layout_height="match_parent"/>
+    <Button
+        android:id="@+id/btnNewStadium"
+        android:textSize="@dimen/_30sdp"
+        android:text="+"
+        android:textStyle="bold"
+        android:background="@drawable/shape_button_post"
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_gravity="bottom|end"/>
 
 </FrameLayout>

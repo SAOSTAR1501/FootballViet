@@ -5,12 +5,14 @@ public class Stadium {
     private String stadiumName;
     private String address;
     private String price;
+    private String image;
 
-    public Stadium(String stadiumId, String stadiumName, String address, String price) {
+    public Stadium(String stadiumId, String stadiumName, String address, String price, String image) {
         this.stadiumId = stadiumId;
         this.stadiumName = stadiumName;
         this.address = address;
         this.price = price;
+        this.image = image;
     }
 
     public Stadium() {
@@ -46,5 +48,13 @@ public class Stadium {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

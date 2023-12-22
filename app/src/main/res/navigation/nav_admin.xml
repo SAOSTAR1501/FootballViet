@@ -21,8 +21,8 @@
         android:label="fragment_manage_users"
         tools:layout="@layout/fragment_manage_users" />
     <fragment
-        android:id="@+id/infoAdmin"
-        android:name="group2.ptdacntt.footballviet.fragments.ForAdmin.InfoAdmin"
-        android:label="fragment_info_admin"
-        tools:layout="@layout/fragment_info_admin" />
+        android:id="@+id/userFragment3"
+        android:name="group2.ptdacntt.footballviet.fragments.ForUser.UserFragment"
+        android:label="fragment_user"
+        tools:layout="@layout/fragment_user" />
 </navigation>

@@ -14,7 +14,7 @@
         app:showAsAction="always"
         android:title="Users"/>
     <item android:icon="@drawable/user"
-        android:id="@+id/infoAdmin"
+        android:id="@+id/userFragment3"
         app:showAsAction="always"
         android:title="Info"/>
 </menu>

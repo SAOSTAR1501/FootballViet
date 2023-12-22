@@ -15,17 +15,7 @@
         android:theme="@style/Theme.FootballViet"
         tools:targetApi="31">
         <activity
-            android:name=".HostStadiumActivity.Dashboard_Host_Stadium"
-            android:exported="false">
-
-        </activity>
-        <activity
-            android:name=".Administrator.Dashboard_Administrator"
-            android:exported="false">
-
-        </activity>
-        <activity
-            android:name=".ContentApp.Dashboard"
+            android:name=".Administrator.Dashboard_Host"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,6 +24,12 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".Administrator.Dashboard_Administrator"
+            android:exported="false"></activity>
+        <activity
+            android:name=".ContentApp.Dashboard"
+            android:exported="false"></activity>
+        <activity
             android:name=".SignUp"
             android:exported="false" />
         <activity
@@ -41,9 +37,7 @@
             android:exported="false" />
         <activity
             android:name=".Intro.WelcomeActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
     </application>
 
 </manifest>

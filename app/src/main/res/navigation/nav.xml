@@ -18,7 +18,14 @@
         android:id="@+id/userFragment"
         android:name="group2.ptdacntt.footballviet.fragments.ForUser.UserFragment"
         android:label="fragment_user"
-        tools:layout="@layout/fragment_user" />
+        tools:layout="@layout/fragment_user" >
+        <action
+            android:id="@+id/action_userFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_changeInfoFragment"
+            app:destination="@id/changeInfoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/pitchFragment"
         android:name="group2.ptdacntt.footballviet.fragments.ForUser.PitchFragment"
@@ -33,4 +40,30 @@
             android:id="@+id/action_postFragment_to_newFeedFragment"
             app:destination="@id/newFeedFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="group2.ptdacntt.footballviet.fragments.ForUser.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" >
+        <action
+            android:id="@+id/action_changePasswordFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/changeInfoFragment"
+        android:name="group2.ptdacntt.footballviet.fragments.ForUser.ChangeInfoFragment"
+        android:label="fragment_change_info"
+        tools:layout="@layout/fragment_change_info" />
+    <fragment
+        android:id="@+id/manageStadiums2"
+        android:name="group2.ptdacntt.footballviet.fragments.ForAdmin.ManageStadiums"
+        android:label="ManageStadiums" >
+        <action
+            android:id="@+id/action_manageStadiums2_to_newStadiumFragment"
+            app:destination="@id/newStadiumFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newStadiumFragment"
+        android:name="group2.ptdacntt.footballviet.fragments.ForAdmin.NewStadiumFragment"
+        android:label="NewStadiumFragment" />
 </navigation>
