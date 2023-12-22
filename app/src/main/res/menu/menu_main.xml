@@ -6,7 +6,7 @@
         app:showAsAction="always"
         android:title="New Feed"/>
     <item android:icon="@drawable/sanbong"
-        android:id="@+id/pitchFragment"
+        android:id="@+id/manageStadiums2"
         app:showAsAction="always"
         android:title="Pitch"/>
     <item android:icon="@drawable/user"

@@ -6,13 +6,15 @@ public class Stadium {
     private String address;
     private String price;
     private String image;
+    private String owner;
 
-    public Stadium(String stadiumId, String stadiumName, String address, String price, String image) {
+    public Stadium(String stadiumId, String stadiumName, String address, String price, String image, String owner) {
         this.stadiumId = stadiumId;
         this.stadiumName = stadiumName;
         this.address = address;
         this.price = price;
         this.image = image;
+        this.owner = owner;
     }
 
     public Stadium() {
@@ -56,5 +58,13 @@ public class Stadium {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 }

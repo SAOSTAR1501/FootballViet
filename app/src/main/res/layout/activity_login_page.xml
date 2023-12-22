@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Login"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#f5f5f5">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,7 +25,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="150dp"
         android:layout_marginRight="10dp"
-        android:hint="Username"
+        android:hint="Email"
         android:paddingLeft="20dp"
         android:textSize="22sp" />
     <EditText
@@ -32,19 +33,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="22sp"
-        android:hint="Password"
+        android:hint="Mật khẩu"
         android:layout_marginTop="10dp"
         android:paddingLeft="20dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"/>
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@drawable/round_background"
+        android:backgroundTint="@color/bg_screen2"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:text="Đăng nhập"
+        android:textColor="#F8F5F5"
+        android:textAllCaps="false"
         android:textSize="22sp"
+        android:textStyle="bold"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"/>
+        tools:ignore="HardcodedText,RtlSymmetry"/>
     <TextView
         android:id="@+id/tvForgotPassword"
         android:layout_width="match_parent"
@@ -62,10 +71,18 @@
         android:textSize="@dimen/dp16"/>
     <Button
         android:id="@+id/btnSignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Register"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@drawable/round_background"
+        android:backgroundTint="@color/bg_screen2"
+        android:gravity="center"
+        android:textColor="#F8F5F5"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:text="Đăng ký"
+        android:textAllCaps="false"
         android:textSize="22sp"
+        android:textStyle="bold"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"/>
+        tools:ignore="HardcodedText,RtlSymmetry"/>
 </LinearLayout>

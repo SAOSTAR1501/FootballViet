@@ -78,13 +78,13 @@ public class UserFragment extends Fragment {
         btnChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.action_userFragment2_to_changePasswordFragment2);
+                navController.navigate(R.id.action_userFragment_to_changePasswordFragment);
             }
         });
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.action_userFragment2_to_changeInfoFragment2);
+                navController.navigate(R.id.action_userFragment_to_changeInfoFragment);
             }
         });
         btnLogout.setOnClickListener(new View.OnClickListener() {

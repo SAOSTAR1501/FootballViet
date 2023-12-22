@@ -27,11 +27,6 @@
             app:destination="@id/changeInfoFragment" />
     </fragment>
     <fragment
-        android:id="@+id/pitchFragment"
-        android:name="group2.ptdacntt.footballviet.fragments.ForUser.PitchFragment"
-        android:label="fragment_pitch"
-        tools:layout="@layout/fragment_pitch" />
-    <fragment
         android:id="@+id/postFragment"
         android:name="group2.ptdacntt.footballviet.fragments.ForUser.PostFragment"
         android:label="fragment_post"
@@ -56,7 +51,7 @@
         tools:layout="@layout/fragment_change_info" />
     <fragment
         android:id="@+id/manageStadiums2"
-        android:name="group2.ptdacntt.footballviet.fragments.ForAdmin.ManageStadiums"
+        android:name="group2.ptdacntt.footballviet.fragments.ForUser.StadiumFragment"
         android:label="ManageStadiums" >
         <action
             android:id="@+id/action_manageStadiums2_to_newStadiumFragment"
@@ -64,6 +59,10 @@
     </fragment>
     <fragment
         android:id="@+id/newStadiumFragment"
-        android:name="group2.ptdacntt.footballviet.fragments.ForAdmin.NewStadiumFragment"
-        android:label="NewStadiumFragment" />
+        android:name="group2.ptdacntt.footballviet.fragments.ForUser.NewStadiumFragment"
+        android:label="NewStadiumFragment" >
+        <action
+            android:id="@+id/action_newStadiumFragment_to_manageStadiums2"
+            app:destination="@id/manageStadiums2" />
+    </fragment>
 </navigation>

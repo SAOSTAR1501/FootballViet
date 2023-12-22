@@ -39,6 +39,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import group2.ptdacntt.footballviet.Models.NewFeed;
@@ -163,6 +164,7 @@ public class NewFeedFragment extends Fragment {
                     NewFeed newFeed=dataSnapshot.getValue(NewFeed.class);
                     list.add(newFeed);
                 }
+                Collections.reverse(list);
                 adapter=new NewFeedAdapter(list,getContext());
                 rcv.setAdapter(adapter);
             }

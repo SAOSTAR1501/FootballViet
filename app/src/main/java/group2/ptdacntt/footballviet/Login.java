@@ -97,10 +97,8 @@ public class Login extends AppCompatActivity {
                     if (user != null && user.getRole().equals("administrator")) {
                         // Người dùng là admin, chuyển đến màn hình admin
                         startActivity(new Intent(Login.this, Dashboard_Administrator.class));
-                    } else if (user != null && user.getRole().equals("Chủ sân")) {
+                    } else if (user != null) {
                         // Người dùng là user, chuyển đến màn hình user
-                        startActivity(new Intent(Login.this, Dashboard_Host_Stadium.class));
-                    } else {
                         startActivity(new Intent(Login.this, Dashboard.class));
                     }
 

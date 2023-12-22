@@ -10,6 +10,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -63,6 +65,7 @@ public class PostFragment extends Fragment {
     EditText edtName,edtNgay,edtGio,edtSan,edtContent;
     static String date;
 
+    NavController navController;
 
     public PostFragment() {
     }
@@ -112,6 +115,7 @@ public class PostFragment extends Fragment {
         edtNgay=view.findViewById(R.id.edtNgay);
         edtGio=view.findViewById(R.id.edtGio);
         edtContent=view.findViewById(R.id.edtContent);
+        navController = NavHostFragment.findNavController(PostFragment.this);
         storageReference = FirebaseStorage.getInstance().getReference();
         databaseReference= FirebaseDatabase.getInstance().getReference();
         FirebaseAuth auth =FirebaseAuth.getInstance();
@@ -159,9 +163,10 @@ public class PostFragment extends Fragment {
                                             String ngay=edtNgay.getText().toString().trim();
                                             String gio=edtGio.getText().toString().trim();
                                             String content=edtContent.getText().toString().trim();
-                                            NewFeed newFeed=new NewFeed(user.getUid()+date+time,name,san,ngay,gio,content,down,user.getEmail());
+                                            NewFeed newFeed=new NewFeed(user.getUid()+date+time,name,san,ngay,gio,content,down,user.getUid());
                                             databaseReference.child("users").child(user.getUid()).child("posts").child(user.getUid()+date+time).setValue(newFeed);
                                             databaseReference.child("posts").child(user.getUid()+date+time).setValue(newFeed);
+                                            navController.navigate(R.id.action_postFragment_to_newFeedFragment);
                                         }
                                     });
                                 }

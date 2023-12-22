@@ -5,123 +5,141 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Login"
-    android:orientation="vertical">
-    <TextView
+    android:orientation="vertical"
+    android:background="#f5f5f5">
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="FootballViet"
-        android:textSize="40sp"
-        android:background="#009900"
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:padding="10dp"
-        android:textStyle="bold"/>
-
-    <EditText
-        android:id="@+id/edtEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="22sp"
-        android:hint="Email"
-        android:layout_marginTop="20dp"
-        android:paddingLeft="20dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"/>
-    <EditText
-        android:id="@+id/edtFullName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="22sp"
-        android:hint="Họ tên"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="20dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"/>
-
-    <EditText
-        android:id="@+id/edtAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="22sp"
-        android:hint="Địa chỉ"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="20dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"/>
-    <EditText
-        android:id="@+id/edtPhoneNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="22sp"
-        android:hint="Điện thoại"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="20dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"/>
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="10dp">
-        <TextView
-            android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Bạn là: "
-            android:textSize="18sp"
-            android:layout_gravity="center"/>
-        <RadioGroup
-            android:id="@+id/rbRole"
-            android:orientation="horizontal">
-            <RadioButton
-                android:id="@+id/rbPerson"
-                android:layout_width="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cá nhân"/>
-            <RadioButton
-                android:id="@+id/rbHostStadium"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Chủ sân"
-                android:layout_marginLeft="20dp"/>
-        </RadioGroup>
-    </TableRow>
-    <EditText
-        android:id="@+id/edtUsername"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Username"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:paddingLeft="20dp"
-        android:textSize="22sp"/>
-    <EditText
-        android:id="@+id/edtPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="22sp"
-        android:hint="Mật khẩu"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="20dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"/>
-    <EditText
-        android:id="@+id/edtConfirmPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="22sp"
-        android:hint="Nhập lại mật khẩu"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="20dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"/>
+                android:text="FootballViet"
+                android:textSize="40sp"
+                android:background="#009900"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textStyle="bold"/>
 
-    <Button
-        android:id="@+id/btnSignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:layout_marginTop="20dp"
-        android:text="Đăng ký"
-        android:textSize="22sp" />
+            <EditText
+                android:id="@+id/edtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:hint="Email"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+            <EditText
+                android:id="@+id/edtFullName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:hint="Họ tên"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+            <EditText
+                android:id="@+id/edtAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:hint="Địa chỉ"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+            <EditText
+                android:id="@+id/edtPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:hint="Điện thoại"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Bạn là: "
+                    android:textSize="18sp"
+                    android:layout_gravity="center"/>
+                <RadioGroup
+                    android:id="@+id/rbRole"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/rbPerson"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cá nhân"/>
+                    <RadioButton
+                        android:id="@+id/rbHostStadium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Chủ sân"
+                        android:layout_marginLeft="20dp"/>
+                </RadioGroup>
+            </TableRow>
+            <EditText
+                android:id="@+id/edtUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Username"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:paddingLeft="20dp"
+                android:textSize="22sp"/>
+            <EditText
+                android:id="@+id/edtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:hint="Mật khẩu"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+            <EditText
+                android:id="@+id/edtConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:hint="Nhập lại mật khẩu"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+            <Button
+                android:id="@+id/btnSignUp"
+                android:layout_width="300dp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/round_background"
+                android:backgroundTint="@color/bg_screen2"
+                android:gravity="center"
+                android:textColor="#F8F5F5"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:text="Đăng ký"
+                android:textAllCaps="false"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                tools:ignore="HardcodedText,RtlSymmetry" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

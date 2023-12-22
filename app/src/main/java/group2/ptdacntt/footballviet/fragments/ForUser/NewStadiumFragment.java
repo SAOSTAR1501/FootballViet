@@ -1,4 +1,6 @@
-package group2.ptdacntt.footballviet.fragments.ForAdmin;
+package group2.ptdacntt.footballviet.fragments.ForUser;
+
+import static android.app.Activity.RESULT_OK;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -8,6 +10,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -51,9 +55,9 @@ public class NewStadiumFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private static final int PICK_IMAGE_REQUEST = 1;
+    private static final int PICK_IMAGE_REQUEST = 2;
 
-
+    NavController navController;
     EditText edtTenSan, edtDiaChi, edtGia;
     ImageView imgAnh;
     private Uri imageUri;
@@ -111,6 +115,8 @@ public class NewStadiumFragment extends Fragment {
         btnChoose = view.findViewById(R.id.btnChoose);
         storageReference= FirebaseStorage.getInstance().getReference();
         databaseReference = FirebaseDatabase.getInstance().getReference();
+        navController = NavHostFragment.findNavController(NewStadiumFragment.this);
+
         FirebaseAuth auth =FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
         Log.d("TAG", "onViewCreated: " +user.getEmail());
@@ -155,8 +161,10 @@ public class NewStadiumFragment extends Fragment {
                                             String stadiumName = edtTenSan.getText().toString().trim();
                                             String address = edtDiaChi.getText().toString().trim();
                                             String price = edtGia.getText().toString().trim();
-                                            Stadium stadium = new Stadium(user.getEmail() +"/"+ user.getUid() + date, stadiumName, address, price,down);
+                                            Stadium stadium = new Stadium(user.getEmail() +"/"+ user.getUid() + date, stadiumName, address, price,down,user.getUid());
                                             databaseReference.child("users").child(user.getUid()).child("stadiums").child(user.getUid()+date+time).setValue(stadium);
+                                            databaseReference.child("stadiums").child(user.getUid()+date+time).setValue(stadium);
+                                            navController.navigate(R.id.action_newStadiumFragment_to_manageStadiums2);
                                         }
                                     });
                                 }
@@ -176,5 +184,14 @@ public class NewStadiumFragment extends Fragment {
                 }
             }
         });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode ==PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            imageUri = data.getData();
+            imgAnh.setImageURI(imageUri);
+        }
     }
 }

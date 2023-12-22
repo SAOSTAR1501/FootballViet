@@ -119,11 +119,8 @@ public class WelcomeActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     User user1=snapshot.getValue(User.class);
-                    if(user1.getRole().equals("Cá nhân")){
+                    if(user1.getRole().equals("Cá nhân")|| user1.getRole().equals("Chủ sân")){
                         Intent intent=new Intent(WelcomeActivity.this, Dashboard.class);
-                        startActivity(intent);
-                    }else if(user1.getRole().equals("Chủ sân")){
-                        Intent intent=new Intent(WelcomeActivity.this, Dashboard_Host_Stadium.class);
                         startActivity(intent);
                     } else if (user1.getRole().equals("Admin")) {
                         startActivity(new Intent(WelcomeActivity.this, Dashboard_Administrator.class));

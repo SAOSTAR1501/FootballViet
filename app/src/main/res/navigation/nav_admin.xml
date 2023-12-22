@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_manage_posts" />
     <fragment
         android:id="@+id/manageStadiums"
-        android:name="group2.ptdacntt.footballviet.fragments.ForAdmin.ManageStadiums"
+        android:name="group2.ptdacntt.footballviet.fragments.ForUser.StadiumFragment"
         android:label="fragment_manage_stadiums"
         tools:layout="@layout/fragment_manage_stadiums" />
     <fragment
