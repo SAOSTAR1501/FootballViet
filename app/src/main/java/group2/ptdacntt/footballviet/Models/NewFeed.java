@@ -8,8 +8,9 @@ public class NewFeed {
     private String gio;
     private String content;
     private String image;
+    private String email;
 
-    public NewFeed(String id, String name, String san, String ngay, String gio, String content, String image) {
+    public NewFeed(String id, String name, String san, String ngay, String gio, String content, String image, String email) {
         this.id = id;
         this.name = name;
         this.san = san;
@@ -17,7 +18,17 @@ public class NewFeed {
         this.gio = gio;
         this.content = content;
         this.image = image;
+        this.email = email;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public NewFeed(){}
 
     public String getId() {

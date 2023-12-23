@@ -123,40 +123,39 @@ public class NewFeedFragment extends Fragment {
         });
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         rcv.setLayoutManager(linearLayoutManager);
-
-        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users");
-        userRef.addValueEventListener(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(@NonNull DataSnapshot usersSnapshot) {
-                list = new ArrayList<>();
-                for (DataSnapshot userSnapshot: usersSnapshot.getChildren()) {
-                    String userId = userSnapshot.getKey();
-                    DatabaseReference postsRef = FirebaseDatabase.getInstance().getReference("users").child(userId).child("posts");
-                    postsRef.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot postsSnapshot) {
-                            for(DataSnapshot postSnapshot: postsSnapshot.getChildren())  {
-                                NewFeed newFeed=postSnapshot.getValue(NewFeed.class);
-                                list.add(newFeed);
-                            }
-                        }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-                }
-                adapter=new NewFeedAdapter(list,getContext());
-                rcv.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        /*FirebaseDatabase.getInstance().getReference("users").child(user.getUid()).child("posts").addListenerForSingleValueEvent(new ValueEventListener() {
+//        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users");
+//        userRef.addValueEventListener(new ValueEventListener() {
+//
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot usersSnapshot) {
+//                list = new ArrayList<>();
+//                for (DataSnapshot userSnapshot: usersSnapshot.getChildren()) {
+//                    String userId = userSnapshot.getKey();
+//                    DatabaseReference postsRef = FirebaseDatabase.getInstance().getReference("posts");
+//                    postsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(@NonNull DataSnapshot postsSnapshot) {
+//                            for(DataSnapshot postSnapshot: postsSnapshot.getChildren())  {
+//                                NewFeed newFeed=postSnapshot.getValue(NewFeed.class);
+//                                list.add(newFeed);
+//                            }
+//                            adapter=new NewFeedAdapter(list,getContext());
+//                            rcv.setAdapter(adapter);
+//                        }
+//                        @Override
+//                        public void onCancelled(@NonNull DatabaseError error) {
+//
+//                        }
+//                    });
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+        FirebaseDatabase.getInstance().getReference("posts").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list=new ArrayList<>();
@@ -167,12 +166,10 @@ public class NewFeedFragment extends Fragment {
                 adapter=new NewFeedAdapter(list,getContext());
                 rcv.setAdapter(adapter);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });*/
+        });
     }
-
 }

@@ -110,19 +110,21 @@ public class ManageStadiums extends Fragment {
         rcv.setLayoutManager(linearLayoutManager);
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users");
 
-        userRef.addValueEventListener(new ValueEventListener() {
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot usersSnapshot) {
                 list = new ArrayList<>();
                 for(DataSnapshot userSnapshot: usersSnapshot.getChildren()) {
                     DatabaseReference stadiumsRef = FirebaseDatabase.getInstance().getReference("stadiums");
-                    stadiumsRef.addValueEventListener(new ValueEventListener() {
+                    stadiumsRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot stadiumsSnapshot) {
                             for (DataSnapshot stadiumSnapshot : stadiumsSnapshot.getChildren()) {
                                 Stadium stadium = stadiumSnapshot.getValue(Stadium.class);
                                 list.add(stadium);
                             }
+                            adapter = new NewStadiumAdapter(list, getContext());
+                            rcv.setAdapter(adapter);
                         }
 
                         @Override
@@ -139,7 +141,5 @@ public class ManageStadiums extends Fragment {
             }
         });
 
-        adapter = new NewStadiumAdapter(list, getContext());
-        rcv.setAdapter(adapter);
     }
 }

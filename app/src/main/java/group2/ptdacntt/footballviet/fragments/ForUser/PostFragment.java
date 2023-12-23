@@ -159,8 +159,9 @@ public class PostFragment extends Fragment {
                                             String ngay=edtNgay.getText().toString().trim();
                                             String gio=edtGio.getText().toString().trim();
                                             String content=edtContent.getText().toString().trim();
-                                            NewFeed newFeed=new NewFeed(user.getEmail() + "/"+user.getUid()+date,name,san,ngay,gio,content,down);
+                                            NewFeed newFeed=new NewFeed(user.getUid()+date+time,name,san,ngay,gio,content,down,user.getEmail());
                                             databaseReference.child("users").child(user.getUid()).child("posts").child(user.getUid()+date+time).setValue(newFeed);
+                                            databaseReference.child("posts").child(user.getUid()+date+time).setValue(newFeed);
                                         }
                                     });
                                 }

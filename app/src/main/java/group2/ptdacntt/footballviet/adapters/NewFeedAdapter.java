@@ -32,15 +32,14 @@ public class NewFeedAdapter extends RecyclerView.Adapter<NewFeedAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_item_newfeed,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_item_newfeed, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
-        NewFeed newFeed=list.get(position);
-        holder.tvUsername.setText(user.getEmail());
+        NewFeed newFeed = list.get(position);
+        holder.tvUsername.setText(newFeed.getEmail());
         holder.tvTenDoi.setText(newFeed.getName());
         holder.tvSan.setText(newFeed.getSan());
         holder.tvNgay.setText(newFeed.getNgay());
@@ -51,27 +50,27 @@ public class NewFeedAdapter extends RecyclerView.Adapter<NewFeedAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        if(list==null){
+        if (list == null) {
             return 0;
         }
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView tvUsername,tvTenDoi,tvSan,tvNgay,tvGio,tvNoiDung;
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView tvUsername, tvTenDoi, tvSan, tvNgay, tvGio, tvNoiDung;
         ImageView img;
         Button btn;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvUsername=itemView.findViewById(R.id.tvUserName);
-            tvTenDoi=itemView.findViewById(R.id.tvTenDoi);
-            tvSan=itemView.findViewById(R.id.tvSan);
-            tvNgay=itemView.findViewById(R.id.tvNgay);
-            tvGio=itemView.findViewById(R.id.tvGio);
-            tvNoiDung=itemView.findViewById(R.id.tvNoiDung);
-            img=itemView.findViewById(R.id.imgAnhDoi);
-            btn=itemView.findViewById(R.id.btnNhanTin);
+            tvUsername = itemView.findViewById(R.id.tvUserName);
+            tvTenDoi = itemView.findViewById(R.id.tvTenDoi);
+            tvSan = itemView.findViewById(R.id.tvSan);
+            tvNgay = itemView.findViewById(R.id.tvNgay);
+            tvGio = itemView.findViewById(R.id.tvGio);
+            tvNoiDung = itemView.findViewById(R.id.tvNoiDung);
+            img = itemView.findViewById(R.id.imgAnhDoi);
+            btn = itemView.findViewById(R.id.btnNhanTin);
         }
     }
 }
