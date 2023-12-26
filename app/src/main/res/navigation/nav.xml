@@ -56,6 +56,9 @@
         <action
             android:id="@+id/action_manageStadiums2_to_newStadiumFragment"
             app:destination="@id/newStadiumFragment" />
+        <action
+            android:id="@+id/action_manageStadiums2_to_orderStadiumFragment"
+            app:destination="@id/orderStadiumFragment" />
     </fragment>
     <fragment
         android:id="@+id/newStadiumFragment"
@@ -63,6 +66,15 @@
         android:label="NewStadiumFragment" >
         <action
             android:id="@+id/action_newStadiumFragment_to_manageStadiums2"
+            app:destination="@id/manageStadiums2" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderStadiumFragment"
+        android:name="group2.ptdacntt.footballviet.fragments.ForUser.OrderStadiumFragment"
+        android:label="fragment_order_stadium"
+        tools:layout="@layout/fragment_order_stadium" >
+        <action
+            android:id="@+id/action_orderStadiumFragment_to_manageStadiums2"
             app:destination="@id/manageStadiums2" />
     </fragment>
 </navigation>

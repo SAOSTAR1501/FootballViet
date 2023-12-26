@@ -1,5 +1,7 @@
 package group2.ptdacntt.footballviet.Interfaces;
 
-public interface IClick {
+import group2.ptdacntt.footballviet.Models.Stadium;
 
+public interface IClick {
+    void onClickOrderStadium(Stadium stadium);
 }

@@ -4,11 +4,152 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.ForUser.OrderStadiumFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#009900"
+                android:text="Đặt sân"
+                android:textSize="@dimen/_22sdp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:padding="10dp"/>
+            <ImageView
+                android:layout_width="240dp"
+                android:layout_height="320dp"
+                android:src="@drawable/user_image"
+                android:scaleType="centerInside"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Sân: "
+                    android:textSize="@dimen/_16sdp"/>
+                <TextView
+                    android:id="@+id/txtTenSan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/_14sdp"
+                    android:layout_marginLeft="4dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Địa chỉ: "
+                    android:textSize="@dimen/_16sdp"/>
+                <TextView
+                    android:id="@+id/txtDiaChi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/_14sdp"
+                    android:layout_marginLeft="4dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Giá: "
+                    android:textSize="@dimen/_16sdp"/>
+                <TextView
+                    android:id="@+id/txtGia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/_14sdp"
+                    android:layout_marginLeft="4dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Ngày đặt:"
+                    android:textSize="@dimen/_16sdp"
+                    android:gravity="center"/>
+                <EditText
+                    android:id="@+id/edtNgayDat"
+                    android:layout_width="140dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="4dp"/>
+                <Button
+                    android:id="@+id/btnOpenDatePicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chọn ngày"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Giờ vào:"
+                    android:textSize="@dimen/_16sdp"/>
+                <Spinner
+                    android:id="@+id/spGioVao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="2dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Giờ ra:"
+                    android:textSize="@dimen/_16sdp"/>
+                <Spinner
+                    android:id="@+id/spGioRa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="2dp"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/btnXacNhanDatSan"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_gravity="center"
+                android:text="Xác nhận đặt"
+                android:background="@drawable/round_background"
+                android:backgroundTint="@color/bg_screen2"
+                android:textColor="#F8F5F5"
+                android:textAllCaps="false"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,RtlSymmetry"
+                android:gravity="center"
+                android:layout_marginBottom="@dimen/_5sdp"/>
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

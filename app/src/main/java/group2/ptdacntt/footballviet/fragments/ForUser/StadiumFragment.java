@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import group2.ptdacntt.footballviet.Interfaces.IClick;
 import group2.ptdacntt.footballviet.Models.NewFeed;
 import group2.ptdacntt.footballviet.Models.Stadium;
 import group2.ptdacntt.footballviet.Models.User;
@@ -39,7 +40,7 @@ import group2.ptdacntt.footballviet.adapters.NewStadiumAdapter;
  * Use the {@link StadiumFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class StadiumFragment extends Fragment {
+public class StadiumFragment extends Fragment implements IClick {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -89,16 +90,6 @@ public class StadiumFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        adapter.setOnBookingClickListener(stadium -> {
-            openBookingDetailsFragment(stadium);
-        });
-    }
-
-    private void openBookingDetailsFragment(Stadium stadium) {
-        Bundle bundle = new Bundle();
-        bundle.putString("stadium_name", stadium.getStadiumName());
-        bundle.putString("stadium_price", String.valueOf(stadium.getPrice()));
     }
 
     @Override
@@ -192,7 +183,7 @@ public class StadiumFragment extends Fragment {
                     list.add(stadium);
                 }
                 Collections.reverse(list);
-                adapter=new NewStadiumAdapter(list,getContext());
+                adapter=new NewStadiumAdapter(list,getContext(), StadiumFragment.this);
                 rcv.setAdapter(adapter);
             }
             @Override
@@ -200,5 +191,12 @@ public class StadiumFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onClickOrderStadium(Stadium stadium) {
+        Bundle bundle = new Bundle();
+        bundle.putString("stadiumId", stadium.getStadiumId());
+        navController.navigate(R.id.action_manageStadiums2_to_orderStadiumFragment);
     }
 }

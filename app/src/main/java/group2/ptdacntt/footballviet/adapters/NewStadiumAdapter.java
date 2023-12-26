@@ -22,18 +22,19 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
+import group2.ptdacntt.footballviet.Interfaces.IClick;
 import group2.ptdacntt.footballviet.Models.Stadium;
 import group2.ptdacntt.footballviet.R;
 
 public class NewStadiumAdapter extends RecyclerView.Adapter<NewStadiumAdapter.ViewHolder> {
     List<Stadium> list;
     Context context;
+    IClick iClick;
 
-    private OnBookingClickListener onBookingClickListener;
-
-    public NewStadiumAdapter(List<Stadium> list, Context context) {
+    public NewStadiumAdapter(List<Stadium> list, Context context, IClick iClick) {
         this.list = list;
         this.context = context;
+        this.iClick = iClick;
     }
 
     @NonNull
@@ -66,19 +67,14 @@ public class NewStadiumAdapter extends RecyclerView.Adapter<NewStadiumAdapter.Vi
         holder.txtDiaChi.setText(stadium.getAddress());
         holder.txtGia.setText(stadium.getPrice() + "đ");
         Glide.with(context).load(stadium.getImage()).into(holder.imgAnhSan);
-        holder.btnBookStadium.setOnClickListener(view -> {
-            if(onBookingClickListener!= null) {
-                onBookingClickListener.onBookingClick(stadium);
+        holder.btnBookStadium.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iClick.onClickOrderStadium(stadium);
             }
         });
     }
 
-    public interface OnBookingClickListener {
-        void onBookingClick(Stadium stadium);
-    }
-    public void setOnBookingClickListener(OnBookingClickListener listener) {
-        this.onBookingClickListener = listener;
-    }
 
     @Override
     public int getItemCount() {
