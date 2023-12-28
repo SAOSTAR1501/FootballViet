@@ -23,10 +23,10 @@
                 android:padding="10dp"/>
             <ImageView
                 android:id="@+id/imgAnhSanOrder"
-                android:layout_width="240dp"
-                android:layout_height="320dp"
+                android:layout_width="360dp"
+                android:layout_height="280dp"
                 android:src="@drawable/user_image"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"/>
             <LinearLayout
@@ -45,7 +45,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:textSize="@dimen/_14sdp"
-                    android:layout_marginLeft="4dp"/>
+                    android:layout_marginLeft="4dp"
+                    android:textStyle="bold"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -63,7 +64,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:textSize="@dimen/_14sdp"
-                    android:layout_marginLeft="4dp"/>
+                    android:layout_marginLeft="4dp"
+                    android:textStyle="bold"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -81,12 +83,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:textSize="@dimen/_14sdp"
-                    android:layout_marginLeft="4dp"/>
+                    android:layout_marginLeft="4dp"
+                    android:textStyle="bold|italic"/>
 
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp">
@@ -100,12 +103,15 @@
                     android:id="@+id/edtNgayDat"
                     android:layout_width="140dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="4dp"/>
-                <Button
+                    android:layout_marginLeft="4dp"
+                    android:textStyle="bold"
+                    android:gravity="center"/>
+                <ImageButton
                     android:id="@+id/btnOpenDatePicker"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Chọn ngày"/>
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:text="Chọn ngày"
+                    android:src="@drawable/calendar_icon"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -139,7 +145,7 @@
                 android:layout_width="@dimen/_150sdp"
                 android:layout_height="@dimen/_50sdp"
                 android:layout_marginTop="@dimen/_20sdp"
-                android:layout_gravity="center"
+                android:layout_gravity="center|bottom"
                 android:text="Xác nhận đặt"
                 android:background="@drawable/round_background"
                 android:backgroundTint="@color/bg_screen2"

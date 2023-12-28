@@ -1,5 +1,6 @@
 package group2.ptdacntt.footballviet.fragments.ForUser;
 
+import android.app.DatePickerDialog;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
 
@@ -12,16 +13,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 import group2.ptdacntt.footballviet.Models.Stadium;
 import group2.ptdacntt.footballviet.R;
@@ -44,21 +52,13 @@ public class OrderStadiumFragment extends Fragment {
     ImageView imgAnhSan;
     TextView txtTenSan, txtDiaChi, txtGia;
     EditText edtNgayDat;
-    Button btnOpenDatePicker, btnXacNhanDatSan;
-    Spinner spGioVao, spGioRa;
+    Button btnXacNhanDatSan;
+    ImageButton btnOpenDatePicker;
     String stadiumId;
     public OrderStadiumFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment OrderStadiumFragment.
-     */
     // TODO: Rename and change types and number of parameters
     public static OrderStadiumFragment newInstance(String param1, String param2) {
         OrderStadiumFragment fragment = new OrderStadiumFragment();
@@ -68,7 +68,6 @@ public class OrderStadiumFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,14 +76,12 @@ public class OrderStadiumFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_order_stadium, container, false);
     }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -92,6 +89,7 @@ public class OrderStadiumFragment extends Fragment {
         txtTenSan = view.findViewById(R.id.txtTenSan);
         txtDiaChi = view.findViewById(R.id.txtDiaChi);
         txtGia = view.findViewById(R.id.txtGia);
+        edtNgayDat = view.findViewById(R.id.edtNgayDat);
         btnOpenDatePicker = view.findViewById(R.id.btnOpenDatePicker);
         btnXacNhanDatSan = view.findViewById(R.id.btnXacNhanDatSan);
         stadiumId = getArguments().getString("stadiumId");
@@ -106,16 +104,59 @@ public class OrderStadiumFragment extends Fragment {
                     txtGia.setText(stadium.getPrice());
                     Glide.with(getContext()).load(stadium.getImage()).into(imgAnhSan);
                 }
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
+        btnOpenDatePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar calendar = Calendar.getInstance();
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH);
+                int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
 
+                // Create a DatePickerDialog and show it
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        getContext(),
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int selectedYear, int selectedMonth, int selectedDay) {
+                                // Do something with the selected date
+                                if (isValidDate(selectedYear, selectedMonth, selectedDay)) {
+                                    // Format the selected date
+                                    String selectedDate = formatDate(selectedYear, selectedMonth, selectedDay);
+                                    // Set the formatted date to the EditText
+                                    edtNgayDat.setText(selectedDate);
+                                } else {
+                                    // Show a toast indicating that the selected date is invalid
+                                    Toast.makeText(getContext(), "Không thể chọn ngày trong quá khứ", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        },
+                        year,
+                        month,
+                        dayOfMonth
+                );
 
-
+                datePickerDialog.show();
+            }
+            private String formatDate(int year, int month, int day) {
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(year, month, day);
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                return sdf.format(calendar.getTime());
+            }
+            private boolean isValidDate(int year, int month, int day) {
+                Calendar selectedDate = Calendar.getInstance();
+                selectedDate.set(year, month, day);
+                // Get current date
+                Calendar currentDate = Calendar.getInstance();
+                // Compare the selected date with the current date
+                return !selectedDate.before(currentDate);
+            }
+        });
     }
 }

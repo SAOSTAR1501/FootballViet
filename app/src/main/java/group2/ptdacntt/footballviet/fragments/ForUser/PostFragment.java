@@ -2,6 +2,7 @@ package group2.ptdacntt.footballviet.fragments.ForUser;
 
 import static android.app.Activity.RESULT_OK;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -18,7 +19,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -37,6 +40,7 @@ import com.google.firebase.storage.UploadTask;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import group2.ptdacntt.footballviet.Models.NewFeed;
 import group2.ptdacntt.footballviet.R;
@@ -64,7 +68,7 @@ public class PostFragment extends Fragment {
     DatabaseReference databaseReference;
     EditText edtName,edtNgay,edtGio,edtSan,edtContent;
     static String date;
-
+    ImageButton imbChooseDate;
     NavController navController;
 
     public PostFragment() {
@@ -113,6 +117,7 @@ public class PostFragment extends Fragment {
         edtName=view.findViewById(R.id.edtName);
         edtSan=view.findViewById(R.id.edtSan);
         edtNgay=view.findViewById(R.id.edtNgay);
+        imbChooseDate = view.findViewById(R.id.imbChooseDate);
         edtGio=view.findViewById(R.id.edtGio);
         edtContent=view.findViewById(R.id.edtContent);
         navController = NavHostFragment.findNavController(PostFragment.this);
@@ -136,6 +141,56 @@ public class PostFragment extends Fragment {
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(intent, PICK_IMAGE_REQUEST);
+            }
+        });
+
+        imbChooseDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar calendar = Calendar.getInstance();
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH);
+                int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+
+                // Create a DatePickerDialog and show it
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        getContext(),
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int selectedYear, int selectedMonth, int selectedDay) {
+                                // Do something with the selected date
+                                if (isValidDate(selectedYear, selectedMonth, selectedDay)) {
+                                    // Format the selected date
+                                    String selectedDate = formatDate(selectedYear, selectedMonth, selectedDay);
+                                    // Set the formatted date to the EditText
+                                    edtNgay.setText(selectedDate);
+                                } else {
+                                    // Show a toast indicating that the selected date is invalid
+                                    Toast.makeText(getContext(), "Không thể chọn ngày trong quá khứ", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        },
+                        year,
+                        month,
+                        dayOfMonth
+                );
+
+                datePickerDialog.show();
+            }
+
+            private String formatDate(int year, int month, int day) {
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(year, month, day);
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                return sdf.format(calendar.getTime());
+            }
+            private boolean isValidDate(int year, int month, int day) {
+                Calendar selectedDate = Calendar.getInstance();
+                selectedDate.set(year, month, day);
+                // Get current date
+                Calendar currentDate = Calendar.getInstance();
+                // Compare the selected date with the current date
+                return !selectedDate.before(currentDate);
             }
         });
         btnUp.setOnClickListener(new View.OnClickListener() {

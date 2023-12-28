@@ -37,12 +37,23 @@
             android:layout_margin="@dimen/_10sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        <EditText
-            android:id="@+id/edtNgay"
-            android:hint="Ngày"
-            android:layout_margin="@dimen/_10sdp"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/edtNgay"
+                android:hint="Ngày"
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"/>
+            <ImageButton
+                android:id="@+id/imbChooseDate"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/calendar_icon"
+                android:layout_gravity="center"/>
+        </LinearLayout>
         <EditText
             android:id="@+id/edtContent"
             android:hint="Nội dung"

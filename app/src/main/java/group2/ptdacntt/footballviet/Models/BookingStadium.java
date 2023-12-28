@@ -4,18 +4,18 @@ public class BookingStadium {
     private String bookingId;
     private String stadiumId;
     private String userId;
-    private String startTime;
-    private String endTime;
+    private String timeSlot;
+    private String dateBooking;
 
-    public BookingStadium(String bookingId, String stadiumId, String userId, String startTime, String endTime) {
+    public BookingStadium() {
+    }
+
+    public BookingStadium(String bookingId, String stadiumId, String userId, String timeSlot, String dateBooking) {
         this.bookingId = bookingId;
         this.stadiumId = stadiumId;
         this.userId = userId;
-        this.startTime = startTime;
-        this.endTime = endTime;
-    }
-
-    public BookingStadium() {
+        this.timeSlot = timeSlot;
+        this.dateBooking = dateBooking;
     }
 
     public String getBookingId() {
@@ -42,19 +42,19 @@ public class BookingStadium {
         this.userId = userId;
     }
 
-    public String getStartTime() {
-        return startTime;
+    public String getTimeSlot() {
+        return timeSlot;
     }
 
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
+    public void setTimeSlot(String timeSlot) {
+        this.timeSlot = timeSlot;
     }
 
-    public String getEndTime() {
-        return endTime;
+    public String getDateBooking() {
+        return dateBooking;
     }
 
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
+    public void setDateBooking(String dateBooking) {
+        this.dateBooking = dateBooking;
     }
 }
