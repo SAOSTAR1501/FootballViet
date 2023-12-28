@@ -1,11 +1,13 @@
 package group2.ptdacntt.footballviet.fragments.ForUser;
 
+import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,18 +88,19 @@ public class OrderStadiumFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        imgAnhSan = view.findViewById(R.id.imgAnhSan);
+        imgAnhSan = view.findViewById(R.id.imgAnhSanOrder);
         txtTenSan = view.findViewById(R.id.txtTenSan);
         txtDiaChi = view.findViewById(R.id.txtDiaChi);
         txtGia = view.findViewById(R.id.txtGia);
         btnOpenDatePicker = view.findViewById(R.id.btnOpenDatePicker);
         btnXacNhanDatSan = view.findViewById(R.id.btnXacNhanDatSan);
         stadiumId = getArguments().getString("stadiumId");
-        FirebaseDatabase.getInstance().getReference("stadiums").child(stadiumId).addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("stadiums").child(stadiumId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     Stadium stadium = snapshot.getValue(Stadium.class);
+                    Log.d("TAG", "onDataChange: "+stadium.getStadiumId());
                     txtTenSan.setText(stadium.getStadiumName());
                     txtDiaChi.setText(stadium.getAddress());
                     txtGia.setText(stadium.getPrice());

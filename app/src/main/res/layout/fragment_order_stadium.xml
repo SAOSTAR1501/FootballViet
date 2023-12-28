@@ -22,6 +22,7 @@
                 android:textStyle="bold"
                 android:padding="10dp"/>
             <ImageView
+                android:id="@+id/imgAnhSanOrder"
                 android:layout_width="240dp"
                 android:layout_height="320dp"
                 android:src="@drawable/user_image"
