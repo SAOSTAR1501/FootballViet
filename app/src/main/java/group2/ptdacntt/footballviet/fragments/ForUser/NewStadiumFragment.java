@@ -152,7 +152,7 @@ public class NewStadiumFragment extends Fragment {
                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                                     Task<Uri> download = taskSnapshot.getStorage().getDownloadUrl();
                                     progressDialog.dismiss();
-                                    Toast.makeText(getContext(), "Upload successfully", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), "Thêm sân thành công!", Toast.LENGTH_SHORT).show();
                                     download.addOnSuccessListener(new OnSuccessListener<Uri>() {
                                         @Override
                                         public void onSuccess(Uri uri) {
@@ -161,7 +161,7 @@ public class NewStadiumFragment extends Fragment {
                                             String stadiumName = edtTenSan.getText().toString().trim();
                                             String address = edtDiaChi.getText().toString().trim();
                                             String price = edtGia.getText().toString().trim();
-                                            Stadium stadium = new Stadium(user.getEmail() +"/"+ user.getUid() + date, stadiumName, address, price,down,user.getUid());
+                                            Stadium stadium = new Stadium(user.getUid() + date + time, stadiumName, address, price,down,user.getUid());
                                             databaseReference.child("users").child(user.getUid()).child("stadiums").child(user.getUid()+date+time).setValue(stadium);
                                             databaseReference.child("stadiums").child(user.getUid()+date+time).setValue(stadium);
                                             navController.navigate(R.id.action_newStadiumFragment_to_manageStadiums2);

@@ -28,9 +28,7 @@ import group2.ptdacntt.footballviet.R;
 
 public class UserFragment extends Fragment {
 
-    Button btnChange;
-    Button btnEdit;
-    Button btnLogout;
+    Button btnChange, btnEdit, btnLogout, btnHistoryPosts, btnHistoryBookings;
     NavController navController;
     TextView txtFullName;
     TextView txtEmail;
@@ -48,6 +46,8 @@ public class UserFragment extends Fragment {
         FirebaseUser user = auth.getCurrentUser();
         btnChange = view.findViewById(R.id.btnChange);
         btnEdit = view.findViewById(R.id.btnEdit);
+        btnHistoryPosts = view.findViewById(R.id.btnHistoryPosts);
+        btnHistoryBookings = view.findViewById(R.id.btnHistoryBookings);
         btnLogout = view.findViewById(R.id.btnLogout);
         txtFullName = view.findViewById(R.id.textInputLayout);
         txtEmail = view.findViewById(R.id.userEmail);
@@ -95,6 +95,13 @@ public class UserFragment extends Fragment {
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 requireActivity().finish();
+            }
+        });
+
+        btnHistoryPosts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.action_userFragment_to_historyPostsFragment);
             }
         });
 

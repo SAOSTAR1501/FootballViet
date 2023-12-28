@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_userFragment_to_changeInfoFragment"
             app:destination="@id/changeInfoFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_historyPostsFragment"
+            app:destination="@id/historyPostsFragment" />
     </fragment>
     <fragment
         android:id="@+id/postFragment"
@@ -34,6 +37,9 @@
         <action
             android:id="@+id/action_postFragment_to_newFeedFragment"
             app:destination="@id/newFeedFragment" />
+        <action
+            android:id="@+id/action_postFragment_to_historyPostsFragment"
+            app:destination="@id/historyPostsFragment" />
     </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"
@@ -76,5 +82,16 @@
         <action
             android:id="@+id/action_orderStadiumFragment_to_manageStadiums2"
             app:destination="@id/manageStadiums2" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyPostsFragment"
+        android:name="group2.ptdacntt.footballviet.fragments.ForUser.HistoryPostsFragment"
+        android:label="HistoryPostsFragment" >
+        <action
+            android:id="@+id/action_historyPostsFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_historyPostsFragment_to_postFragment"
+            app:destination="@id/postFragment" />
     </fragment>
 </navigation>

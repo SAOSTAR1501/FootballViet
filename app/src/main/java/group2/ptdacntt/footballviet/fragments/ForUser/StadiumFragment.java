@@ -197,6 +197,6 @@ public class StadiumFragment extends Fragment implements IClick {
     public void onClickOrderStadium(Stadium stadium) {
         Bundle bundle = new Bundle();
         bundle.putString("stadiumId", stadium.getStadiumId());
-        navController.navigate(R.id.action_manageStadiums2_to_orderStadiumFragment);
+        navController.navigate(R.id.action_manageStadiums2_to_orderStadiumFragment, bundle);
     }
 }
