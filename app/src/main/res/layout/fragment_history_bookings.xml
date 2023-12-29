@@ -6,9 +6,18 @@
     tools:context=".fragments.ForUser.HistoryBookingsFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvHistoryBookingStadiums"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
+        android:layout_height="match_parent"/>
+    <Button
+        android:id="@+id/btnNewBooking"
+        android:textSize="@dimen/_30sdp"
+        android:text="+"
+        android:textStyle="bold"
+        android:background="@drawable/shape_button_post"
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_gravity="bottom|end"/>
 </FrameLayout>

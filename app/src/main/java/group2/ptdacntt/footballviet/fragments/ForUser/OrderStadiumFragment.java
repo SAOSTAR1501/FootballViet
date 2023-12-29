@@ -8,6 +8,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -39,6 +41,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import group2.ptdacntt.footballviet.Models.BookingStadium;
 import group2.ptdacntt.footballviet.Models.Stadium;
 import group2.ptdacntt.footballviet.R;
 
@@ -66,6 +69,7 @@ public class OrderStadiumFragment extends Fragment {
     static String date;
     List<String> listTime;
     Spinner spGio;
+    NavController nav;
     public OrderStadiumFragment() {
         // Required empty public constructor
     }
@@ -96,6 +100,7 @@ public class OrderStadiumFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        nav = NavHostFragment.findNavController(OrderStadiumFragment.this);
         imgAnhSan = view.findViewById(R.id.imgAnhSanOrder);
         txtTenSan = view.findViewById(R.id.txtTenSan);
         txtDiaChi = view.findViewById(R.id.txtDiaChi);
@@ -207,7 +212,38 @@ public class OrderStadiumFragment extends Fragment {
 //                progressDialog.show();
                 String selectedDate=edtNgayDat.getText().toString().trim();
                 String gioChon=spGio.getSelectedItem().toString();
+                BookingStadium bookingStadium = new BookingStadium(user.getUid() + date + time, stadiumId,user.getUid(), gioChon, selectedDate, true);
+                //Lưu lần đặt sân theo user đặt theo ngày
+                FirebaseDatabase.getInstance().getReference("users").child(user.getUid()).child("bookings").child(selectedDate).child(user.getUid() + date + time).setValue(bookingStadium);
+                //Lưu lần đặt sân theo bookings 'out' theo sân sau đó theo ngày
+                FirebaseDatabase.getInstance().getReference("bookings").child(stadiumId).child(selectedDate).child(user.getUid() + date + time).setValue(bookingStadium);
+                //Lưu khung giờ đã chọn vào stadium đó theo ngày
                 FirebaseDatabase.getInstance().getReference("stadiums").child(stadiumId).child("time").child(selectedDate).child(gioChon).setValue(gioChon);
+                //Lưu lần đặt sân vào stadiums 'out' theo ngày
+                FirebaseDatabase.getInstance().getReference("stadiums").child(stadiumId).child("bookings").child(selectedDate).setValue(bookingStadium);
+
+                FirebaseDatabase.getInstance().getReference("stadiums").child(stadiumId).child("owner").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            String owner = snapshot.getValue(String.class);
+                            //Lưu thời gian đặt sân theo sân của chủ sân
+                            FirebaseDatabase.getInstance().getReference("users").child(owner).child("stadiums").child(stadiumId).child("time").child(selectedDate).child(gioChon).setValue(gioChon);
+                            //Lưu bookings vào sân của chủ sân
+                            FirebaseDatabase.getInstance().getReference("users").child(owner).child("stadiums").child(stadiumId).child("bookings").child(selectedDate).child(user.getUid() + date + time).setValue(bookingStadium);
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+                Toast.makeText(getContext(), "Đặt sân thành công! Xem chi tiết trong lịch sử đặt sân.", Toast.LENGTH_SHORT).show();
+                nav.navigate(R.id.action_orderStadiumFragment_to_manageStadiums2);
+
+
             }
         });
     }
