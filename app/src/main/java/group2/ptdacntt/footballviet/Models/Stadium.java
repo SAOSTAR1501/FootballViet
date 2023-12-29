@@ -16,7 +16,6 @@ public class Stadium {
         this.image = image;
         this.owner = owner;
     }
-
     public Stadium() {
     }
 

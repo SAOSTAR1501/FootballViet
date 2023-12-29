@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -31,8 +32,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import group2.ptdacntt.footballviet.Models.Stadium;
@@ -60,6 +64,8 @@ public class OrderStadiumFragment extends Fragment {
     ImageButton btnOpenDatePicker;
     String stadiumId;
     static String date;
+    List<String> listTime;
+    Spinner spGio;
     public OrderStadiumFragment() {
         // Required empty public constructor
     }
@@ -97,6 +103,8 @@ public class OrderStadiumFragment extends Fragment {
         edtNgayDat = view.findViewById(R.id.edtNgayDat);
         btnOpenDatePicker = view.findViewById(R.id.btnOpenDatePicker);
         btnXacNhanDatSan = view.findViewById(R.id.btnXacNhanDatSan);
+        spGio=view.findViewById(R.id.spGio);
+
         stadiumId = getArguments().getString("stadiumId");
 
         FirebaseAuth auth =FirebaseAuth.getInstance();
@@ -127,6 +135,7 @@ public class OrderStadiumFragment extends Fragment {
 
             }
         });
+
         btnOpenDatePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,16 +145,35 @@ public class OrderStadiumFragment extends Fragment {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int selectedYear, int selectedMonth, int selectedDay) {
-                                // Do something with the selected date
-//                                if (isValidDate(selectedYear, selectedMonth, selectedDay)) {
-                                    // Format the selected date
-                                    String selectedDate = formatDate(selectedYear, selectedMonth, selectedDay);
-//                                    // Set the formatted date to the EditText
-                                    edtNgayDat.setText(selectedDate);
-//                                } else {
-//                                    // Show a toast indicating that the selected date is invalid
-//                                    Toast.makeText(getContext(), "Không thể chọn ngày trong quá khứ", Toast.LENGTH_SHORT).show();
-//                                }
+                                String selectedDate = formatDate(selectedYear, selectedMonth, selectedDay);
+                                edtNgayDat.setText(selectedDate);
+                                FirebaseDatabase.getInstance().getReference("stadiums").child(stadiumId).child("time").child(selectedDate).addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                                        listTime= Arrays.asList("7-9","9-11","13-15","15-17","17-19","19-21","21-23");
+                                        listTime=new ArrayList<>();
+                                        listTime.add("7-9");
+                                        listTime.add("9-11");
+                                        listTime.add("13-15");
+                                        listTime.add("15-17");
+                                        listTime.add("17-19");
+                                        listTime.add("19-21");
+                                        listTime.add("21-23");
+                                        for(DataSnapshot dataSnapshot:snapshot.getChildren()){
+                                            String chon=dataSnapshot.getValue(String.class);
+                                            listTime.remove(chon);
+                                            Log.d("TAG", "onDataChange: "+chon+"  "+listTime.get(2));
+                                        }
+                                        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item,listTime);
+                                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                        spGio.setAdapter(adapter);
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
                             }
                         },
                         year,
@@ -158,7 +186,7 @@ public class OrderStadiumFragment extends Fragment {
             private String formatDate(int year, int month, int day) {
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(year, month, day);
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
                 return sdf.format(calendar.getTime());
             }
 //            private boolean isValidDate(int year, int month, int day) {
@@ -174,9 +202,12 @@ public class OrderStadiumFragment extends Fragment {
         btnXacNhanDatSan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final ProgressDialog progressDialog = new ProgressDialog(getContext());
-                progressDialog.setTitle("Đang đặt sân...");
-                progressDialog.show();
+//                final ProgressDialog progressDialog = new ProgressDialog(getContext());
+//                progressDialog.setTitle("Đang đặt sân...");
+//                progressDialog.show();
+                String selectedDate=edtNgayDat.getText().toString().trim();
+                String gioChon=spGio.getSelectedItem().toString();
+                FirebaseDatabase.getInstance().getReference("stadiums").child(stadiumId).child("time").child(selectedDate).child(gioChon).setValue(gioChon);
             }
         });
     }
