@@ -6,16 +6,18 @@ public class BookingStadium {
     private String userId;
     private String timeSlot;
     private String dateBooking;
+    private boolean active;
 
     public BookingStadium() {
     }
 
-    public BookingStadium(String bookingId, String stadiumId, String userId, String timeSlot, String dateBooking) {
+    public BookingStadium(String bookingId, String stadiumId, String userId, String timeSlot, String dateBooking, boolean active) {
         this.bookingId = bookingId;
         this.stadiumId = stadiumId;
         this.userId = userId;
         this.timeSlot = timeSlot;
         this.dateBooking = dateBooking;
+        this.active = active;
     }
 
     public String getBookingId() {
@@ -56,5 +58,13 @@ public class BookingStadium {
 
     public void setDateBooking(String dateBooking) {
         this.dateBooking = dateBooking;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

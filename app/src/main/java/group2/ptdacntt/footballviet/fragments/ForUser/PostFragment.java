@@ -159,22 +159,22 @@ public class PostFragment extends Fragment {
                             @Override
                             public void onDateSet(DatePicker view, int selectedYear, int selectedMonth, int selectedDay) {
                                 // Do something with the selected date
-                                if (isValidDate(selectedYear, selectedMonth, selectedDay)) {
-                                    // Format the selected date
+//                                if (isValidDate(selectedYear, selectedMonth, selectedDay)) {
+//                                    // Format the selected date
                                     String selectedDate = formatDate(selectedYear, selectedMonth, selectedDay);
                                     // Set the formatted date to the EditText
                                     edtNgay.setText(selectedDate);
-                                } else {
-                                    // Show a toast indicating that the selected date is invalid
-                                    Toast.makeText(getContext(), "Không thể chọn ngày trong quá khứ", Toast.LENGTH_SHORT).show();
-                                }
+//                                } else {
+//                                    // Show a toast indicating that the selected date is invalid
+//                                    Toast.makeText(getContext(), "Không thể chọn ngày trong quá khứ", Toast.LENGTH_SHORT).show();
+//                                }
                             }
                         },
                         year,
                         month,
                         dayOfMonth
                 );
-
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 datePickerDialog.show();
             }
 
@@ -184,14 +184,14 @@ public class PostFragment extends Fragment {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
                 return sdf.format(calendar.getTime());
             }
-            private boolean isValidDate(int year, int month, int day) {
-                Calendar selectedDate = Calendar.getInstance();
-                selectedDate.set(year, month, day);
-                // Get current date
-                Calendar currentDate = Calendar.getInstance();
-                // Compare the selected date with the current date
-                return !selectedDate.before(currentDate);
-            }
+//            private boolean isValidDate(int year, int month, int day) {
+//                Calendar selectedDate = Calendar.getInstance();
+//                selectedDate.set(year, month, day);
+//                // Get current date
+//                Calendar currentDate = Calendar.getInstance();
+//                // Compare the selected date with the current date
+//                return !selectedDate.before(currentDate);
+//            }
         });
         btnUp.setOnClickListener(new View.OnClickListener() {
             @Override
