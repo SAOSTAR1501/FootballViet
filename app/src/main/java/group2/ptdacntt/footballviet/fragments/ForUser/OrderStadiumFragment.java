@@ -214,7 +214,7 @@ public class OrderStadiumFragment extends Fragment {
                 String gioChon=spGio.getSelectedItem().toString();
                 BookingStadium bookingStadium = new BookingStadium(user.getUid() + date + time, stadiumId,user.getUid(), gioChon, selectedDate, true);
                 //Lưu lần đặt sân theo user đặt theo ngày
-                FirebaseDatabase.getInstance().getReference("users").child(user.getUid()).child("bookings").child(selectedDate).child(user.getUid() + date + time).setValue(bookingStadium);
+                FirebaseDatabase.getInstance().getReference("users").child(user.getUid()).child("bookings").child(user.getUid() + date + time).setValue(bookingStadium);
                 //Lưu lần đặt sân theo bookings 'out' theo sân sau đó theo ngày
                 FirebaseDatabase.getInstance().getReference("bookings").child(stadiumId).child(selectedDate).child(user.getUid() + date + time).setValue(bookingStadium);
                 //Lưu khung giờ đã chọn vào stadium đó theo ngày

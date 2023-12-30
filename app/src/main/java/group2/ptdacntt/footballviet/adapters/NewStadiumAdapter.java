@@ -70,7 +70,7 @@ public class NewStadiumAdapter extends RecyclerView.Adapter<NewStadiumAdapter.Vi
         holder.btnBookStadium.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                iClick.onClickOrderStadium(stadium);
+                iClick.onClickOrderStadium(stadium.getStadiumId());
             }
         });
     }

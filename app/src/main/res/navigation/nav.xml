@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_userFragment_to_historyPostsFragment"
             app:destination="@id/historyPostsFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_historyBookingsFragment"
+            app:destination="@id/historyBookingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/postFragment"
@@ -54,7 +57,11 @@
         android:id="@+id/changeInfoFragment"
         android:name="group2.ptdacntt.footballviet.fragments.ForUser.ChangeInfoFragment"
         android:label="fragment_change_info"
-        tools:layout="@layout/fragment_change_info" />
+        tools:layout="@layout/fragment_change_info" >
+        <action
+            android:id="@+id/action_changeInfoFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+    </fragment>
     <fragment
         android:id="@+id/manageStadiums2"
         android:name="group2.ptdacntt.footballviet.fragments.ForUser.StadiumFragment"
@@ -93,5 +100,20 @@
         <action
             android:id="@+id/action_historyPostsFragment_to_postFragment"
             app:destination="@id/postFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyBookingsFragment"
+        android:name="group2.ptdacntt.footballviet.fragments.ForUser.HistoryBookingsFragment"
+        android:label="fragment_history_bookings"
+        tools:layout="@layout/fragment_history_bookings" >
+        <action
+            android:id="@+id/action_historyBookingsFragment_to_orderStadiumFragment"
+            app:destination="@id/orderStadiumFragment" />
+        <action
+            android:id="@+id/action_historyBookingsFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_historyBookingsFragment_to_manageStadiums2"
+            app:destination="@id/manageStadiums2" />
     </fragment>
 </navigation>

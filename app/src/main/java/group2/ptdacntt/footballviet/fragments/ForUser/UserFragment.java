@@ -104,7 +104,12 @@ public class UserFragment extends Fragment {
                 navController.navigate(R.id.action_userFragment_to_historyPostsFragment);
             }
         });
-
+        btnHistoryBookings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.action_userFragment_to_historyBookingsFragment);
+            }
+        });
         super.onViewCreated(view, savedInstanceState);
     }
 }

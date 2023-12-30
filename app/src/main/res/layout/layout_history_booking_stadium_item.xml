@@ -51,13 +51,15 @@
                 android:id="@+id/btnCancelBook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hủy đặt" />
+                android:text="Hủy đặt"
+                android:layout_marginLeft="50dp"/>
 
             <Button
                 android:id="@+id/btnReBook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Đặt lại"/>
+                android:text="Đặt lại"
+                android:layout_marginLeft="30dp"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

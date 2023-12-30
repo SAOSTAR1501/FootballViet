@@ -195,10 +195,15 @@ public class StadiumFragment extends Fragment implements IClick {
     }
 
     @Override
-    public void onClickOrderStadium(Stadium stadium) {
+    public void onClickOrderStadium(String stadiumId) {
         Bundle bundle=new Bundle();
-        bundle.putString("stadiumId",stadium.getStadiumId());
+        bundle.putString("stadiumId",stadiumId);
         navController.navigate(R.id.action_manageStadiums2_to_orderStadiumFragment,bundle);
         Log.d("TAG", "onClickOrderStadium: ");
+    }
+
+    @Override
+    public void onClickBookingStadium(String bookingId) {
+
     }
 }
