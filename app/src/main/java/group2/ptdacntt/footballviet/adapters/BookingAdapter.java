@@ -2,7 +2,11 @@ package group2.ptdacntt.footballviet.adapters;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +45,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
     @Override
     public BookingAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_history_booking_stadium_item, parent, false);
-        return null;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -57,9 +61,17 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
                         @Override
                         public void onDataChange(@NonNull DataSnapshot stadiumSnapshot) {
                             if(stadiumSnapshot.exists()) {
-                                String userFullName = userSnapshot.getValue(String.class);
+                                String userFullName = userSnapshot.child("fullName").getValue(String.class);
                                 String stadiumName = stadiumSnapshot.getValue(String.class);
-                                holder.txtHeader.setText(userFullName + " đã đặt " + stadiumName);
+                                String headerBooking = userFullName + " đã đặt " + stadiumName;
+                                SpannableString spannableString = new SpannableString(headerBooking);
+                                StyleSpan boldSpan1 = new StyleSpan(Typeface.BOLD);
+                                spannableString.setSpan(boldSpan1, 0, userFullName.length(), SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                                StyleSpan boldSpan2 = new StyleSpan(Typeface.BOLD);
+                                spannableString.setSpan(boldSpan2, userFullName.length() + 7, headerBooking.length(), SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                                holder.txtHeader.setText(spannableString);
                             }
                         }
 
@@ -106,7 +118,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 FirebaseDatabase.getInstance().getReference("bookings").child(bookingStadium.getStadiumId()).child(bookingStadium.getDateBooking()).child(bookingStadium.getBookingId()).child("active").setValue("false");
-                                FirebaseDatabase.getInstance().getReference("users").child(bookingStadium.getUserId()).child("bookings").child(bookingStadium.getDateBooking()).child(bookingStadium.getBookingId()).child("active").setValue("false");
+                                FirebaseDatabase.getInstance().getReference("users").child(bookingStadium.getUserId()).child("bookings").child(bookingStadium.getBookingId()).child("active").setValue("false");
                                 FirebaseDatabase.getInstance().getReference("stadiums").child(bookingStadium.getStadiumId()).child("owner").addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot ownerSnapshot) {

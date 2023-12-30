@@ -120,9 +120,11 @@ public class HistoryBookingsFragment extends Fragment implements IClick {
                         BookingStadium bookingStadium = bookingSnapshot.getValue(BookingStadium.class);
                         list.add(bookingStadium);
                     }
-                    Collections.reverse(list);
-                    adapter = new BookingAdapter(list, getContext(),HistoryBookingsFragment.this);
-                    rcv.setAdapter(adapter);
+                    if(list.size()!=0) {
+                        Collections.reverse(list);
+                        adapter = new BookingAdapter(list, getContext(),HistoryBookingsFragment.this);
+                        rcv.setAdapter(adapter);
+                    }
                 }
             }
 
