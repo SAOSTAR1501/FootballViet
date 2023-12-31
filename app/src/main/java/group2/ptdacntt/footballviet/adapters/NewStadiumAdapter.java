@@ -23,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.List;
 
 import group2.ptdacntt.footballviet.Interfaces.IClick;
+import group2.ptdacntt.footballviet.Interfaces.ImageClickListener;
 import group2.ptdacntt.footballviet.Models.Stadium;
 import group2.ptdacntt.footballviet.R;
 
@@ -89,6 +90,7 @@ public class NewStadiumAdapter extends RecyclerView.Adapter<NewStadiumAdapter.Vi
         TextView txtUsername, txtTenSan, txtDiaChi, txtGia;
         ImageView imgAnhSan;
         Button btnBookStadium;
+        ImageClickListener imageClickListener;
 
         public ViewHolder (@NonNull View itemView) {
             super(itemView);
@@ -98,7 +100,9 @@ public class NewStadiumAdapter extends RecyclerView.Adapter<NewStadiumAdapter.Vi
             txtGia = itemView.findViewById(R.id.txtGia);
             imgAnhSan = itemView.findViewById(R.id.imgAnhSan);
             btnBookStadium = itemView.findViewById(R.id.btnDatSan);
+
         }
+
 
     }
 }
