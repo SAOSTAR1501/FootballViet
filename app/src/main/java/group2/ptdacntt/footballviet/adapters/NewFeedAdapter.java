@@ -1,5 +1,6 @@
 package group2.ptdacntt.footballviet.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,16 +23,19 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
+import group2.ptdacntt.footballviet.Interfaces.IClick;
 import group2.ptdacntt.footballviet.Models.NewFeed;
 import group2.ptdacntt.footballviet.R;
 
 public class NewFeedAdapter extends RecyclerView.Adapter<NewFeedAdapter.ViewHolder> {
     List<NewFeed> list;
     Context context;
+    ClickMess clickMess;
 
-    public NewFeedAdapter(List<NewFeed> list, Context context) {
+    public NewFeedAdapter(List<NewFeed> list, Context context, ClickMess clickMess) {
         this.list = list;
         this.context = context;
+        this.clickMess=clickMess;
     }
 
     @NonNull
@@ -42,17 +46,16 @@ public class NewFeedAdapter extends RecyclerView.Adapter<NewFeedAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         NewFeed newFeed = list.get(position);
-        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users").child(newFeed.getEmail());
-        userRef.addValueEventListener(new ValueEventListener() {
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(newFeed.getEmail());
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()) {
                     holder.tvUsername.setText(snapshot.child("fullName").getValue(String.class));
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -64,6 +67,12 @@ public class NewFeedAdapter extends RecyclerView.Adapter<NewFeedAdapter.ViewHold
         holder.tvGio.setText(newFeed.getGio());
         holder.tvNoiDung.setText(newFeed.getContent());
         Glide.with(context).load(newFeed.getImage()).into(holder.img);
+        holder.btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickMess.onClick(list.get(position));
+            }
+        });
     }
 
     @Override
@@ -90,5 +99,8 @@ public class NewFeedAdapter extends RecyclerView.Adapter<NewFeedAdapter.ViewHold
             img = itemView.findViewById(R.id.imgAnhDoi);
             btn = itemView.findViewById(R.id.btnNhanTin);
         }
+    }
+    public interface ClickMess {
+        void onClick(NewFeed newFeed);
     }
 }

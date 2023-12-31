@@ -111,7 +111,7 @@ public class HistoryBookingsFragment extends Fragment implements IClick {
 
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         rcv.setLayoutManager(linearLayoutManager);
-        FirebaseDatabase.getInstance().getReference("users").child(user.getUid()).child("bookings").addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("users").child(user.getUid()).child("bookings").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot bookingsSnapshot) {
                 list = new ArrayList<>();

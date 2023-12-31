@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_newFeedFragment_to_postFragment"
             app:destination="@id/postFragment" />
+        <action
+            android:id="@+id/action_newFeedFragment_to_chatActivity"
+            app:destination="@id/chatActivity" />
     </fragment>
     <fragment
         android:id="@+id/userFragment"
@@ -116,4 +119,9 @@
             android:id="@+id/action_historyBookingsFragment_to_manageStadiums2"
             app:destination="@id/manageStadiums2" />
     </fragment>
+    <activity
+        android:id="@+id/chatActivity"
+        android:name="group2.ptdacntt.footballviet.fragments.ChatActivity"
+        android:label="activity_chat"
+        tools:layout="@layout/activity_chat" />
 </navigation>

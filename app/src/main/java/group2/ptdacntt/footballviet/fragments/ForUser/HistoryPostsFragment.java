@@ -35,7 +35,7 @@ import group2.ptdacntt.footballviet.adapters.NewFeedAdapter;
  * Use the {@link HistoryPostsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HistoryPostsFragment extends Fragment {
+public class HistoryPostsFragment extends Fragment implements NewFeedAdapter.ClickMess {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -117,7 +117,7 @@ public class HistoryPostsFragment extends Fragment {
                     list.add(newFeed);
                 }
                 Collections.reverse(list);
-                adapter=new NewFeedAdapter(list,getContext());
+                adapter=new NewFeedAdapter(list,getContext(),HistoryPostsFragment.this);
                 rcv.setAdapter(adapter);
             }
             @Override
@@ -125,5 +125,10 @@ public class HistoryPostsFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onClick(NewFeed newFeed) {
+
     }
 }
