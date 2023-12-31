@@ -132,7 +132,7 @@
                     android:elevation="0dp"
                     android:gravity="left|center"
                     android:paddingStart="30dp"
-                    android:text="mess"
+                    android:text="Tin nhắn"
                     android:textAllCaps="false"
                     android:textSize="18sp"
                     android:textStyle="bold" />
