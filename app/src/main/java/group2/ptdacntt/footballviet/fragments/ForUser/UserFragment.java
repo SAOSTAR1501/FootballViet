@@ -28,7 +28,7 @@ import group2.ptdacntt.footballviet.R;
 
 public class UserFragment extends Fragment {
 
-    Button btnChange, btnEdit, btnLogout, btnHistoryPosts, btnHistoryBookings;
+    Button btnChange, btnEdit, btnLogout, btnHistoryPosts, btnHistoryBookings,btnMess;
     NavController navController;
     TextView txtFullName;
     TextView txtEmail;
@@ -51,6 +51,7 @@ public class UserFragment extends Fragment {
         btnLogout = view.findViewById(R.id.btnLogout);
         txtFullName = view.findViewById(R.id.textInputLayout);
         txtEmail = view.findViewById(R.id.userEmail);
+        btnMess=view.findViewById(R.id.btnMess);
         navController = NavHostFragment.findNavController(UserFragment.this);
 
         if (user != null) {
@@ -108,6 +109,12 @@ public class UserFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 navController.navigate(R.id.action_userFragment_to_historyBookingsFragment);
+            }
+        });
+        btnMess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_userFragment_to_userChatFragment);
             }
         });
         super.onViewCreated(view, savedInstanceState);
