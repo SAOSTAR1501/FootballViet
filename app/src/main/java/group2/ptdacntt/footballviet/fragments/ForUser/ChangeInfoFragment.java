@@ -26,9 +26,13 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import group2.ptdacntt.footballviet.Models.User;
 import group2.ptdacntt.footballviet.R;
 
 /**
@@ -39,12 +43,13 @@ import group2.ptdacntt.footballviet.R;
 public class ChangeInfoFragment extends Fragment {
     Button btnSave;
     Button btnChoose;
-    EditText etFullName;
-    EditText etEmail;
-    EditText etPhone;
+    EditText edtFullName, edtDiaChi, edtPhone;
+
     ImageView userImage;
     NavController navController;
     Uri uri;
+    FirebaseAuth auth = FirebaseAuth.getInstance();
+    FirebaseUser user = auth.getCurrentUser();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -103,14 +108,30 @@ public class ChangeInfoFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        etFullName = view.findViewById(R.id.txtFullName);
-        etEmail = view.findViewById(R.id.txtEmail);
-        etPhone = view.findViewById(R.id.txtPhone);
+        edtFullName = view.findViewById(R.id.txtFullName);
+        edtDiaChi = view.findViewById(R.id.txtEmail);
+        edtPhone = view.findViewById(R.id.txtPhone);
         btnSave = view.findViewById(R.id.btnUpdate);
         btnChoose = view.findViewById(R.id.chooseAvatar);
         userImage = view.findViewById(R.id.profile_image2);
         navController = NavHostFragment.findNavController(ChangeInfoFragment.this);
 
+        FirebaseDatabase.getInstance().getReference("users").child(user.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    User user1 = snapshot.getValue(User.class);
+                    edtFullName.setText(user1.getFullName());
+                    edtPhone.setText(user1.getPhoneNumber());
+                    edtDiaChi.setText(user1.getAddress());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         btnSave.setOnClickListener(v -> {
             updateUserInfo();
         });
@@ -125,15 +146,14 @@ public class ChangeInfoFragment extends Fragment {
     }
 
     private void updateUserInfo() {
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseUser user = auth.getCurrentUser();
+
 
         if (user != null) {
             DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
 
-            String fullName = etFullName.getText().toString().trim();
-            String email = etEmail.getText().toString().trim();
-            String phone = etPhone.getText().toString().trim();
+            String fullName = edtFullName.getText().toString().trim();
+            String email = edtDiaChi.getText().toString().trim();
+            String phone = edtPhone.getText().toString().trim();
 
             if (fullName.isEmpty() || email.isEmpty() || phone.isEmpty()) {
                 Toast.makeText(requireContext(), "Vui lòng điền đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
@@ -142,7 +162,7 @@ public class ChangeInfoFragment extends Fragment {
             databaseReference.child("fullName").setValue(fullName);
             databaseReference.child("email").setValue(email);
             databaseReference.child("phoneNumber").setValue(phone);
-            databaseReference.child("image").setValue(uri);
+            databaseReference.child("profileImage").setValue(uri);
             Toast.makeText(requireContext(), "Cập nhật thông tin thành công", Toast.LENGTH_SHORT).show();
         }
 

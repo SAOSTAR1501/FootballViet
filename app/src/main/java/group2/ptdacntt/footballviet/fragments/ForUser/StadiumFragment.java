@@ -29,6 +29,7 @@ import java.util.Collections;
 import java.util.List;
 
 import group2.ptdacntt.footballviet.Interfaces.IClick;
+import group2.ptdacntt.footballviet.Interfaces.ImageClickListener;
 import group2.ptdacntt.footballviet.Models.NewFeed;
 import group2.ptdacntt.footballviet.Models.Stadium;
 import group2.ptdacntt.footballviet.Models.User;
@@ -143,38 +144,6 @@ public class StadiumFragment extends Fragment implements IClick {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rcv.setLayoutManager(linearLayoutManager);
 
-
-        /*userRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot usersSnapshot) {
-                list = new ArrayList<>();
-                for(DataSnapshot userSnapshot: usersSnapshot.getChildren()) {
-                    DatabaseReference stadiumsRef = FirebaseDatabase.getInstance().getReference("stadiums");
-                    stadiumsRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot stadiumsSnapshot) {
-                            for (DataSnapshot stadiumSnapshot : stadiumsSnapshot.getChildren()) {
-                                Stadium stadium = stadiumSnapshot.getValue(Stadium.class);
-                                list.add(stadium);
-                            }
-                            adapter = new NewStadiumAdapter(list, getContext());
-                            rcv.setAdapter(adapter);
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*/
-
         FirebaseDatabase.getInstance().getReference("stadiums").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -206,4 +175,5 @@ public class StadiumFragment extends Fragment implements IClick {
     public void onClickBookingStadium(String bookingId) {
 
     }
+
 }

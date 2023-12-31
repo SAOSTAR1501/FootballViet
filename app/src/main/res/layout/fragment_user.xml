@@ -13,52 +13,27 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:text="Tài khoản"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_18sdp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_gravity="center"/>
+                android:orientation="vertical"
+                android:layout_marginTop="10dp">
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profile_image2"
                     android:layout_width="@dimen/_70sdp"
                     android:layout_height="@dimen/_70sdp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
                     android:src="@drawable/icon_app"
                     app:civ_border_color="#FF000000"
                     app:civ_border_width="3dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="MissingConstraints"
                     android:layout_gravity="center"/>
-
-
                 <TextView
                     android:id="@+id/textInputLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:maxLines="1"
                     android:text="Phạm Trịnh Thế Anh"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_20sdp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-                    tools:ignore="HardcodedText"
                     android:layout_gravity="center">
 
                 </TextView>
@@ -74,10 +49,6 @@
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_13sdp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-                    tools:ignore="HardcodedText,RtlSymmetry"
                     android:layout_gravity="center"/>
                 <Button
                     android:id="@+id/btnHistoryPosts"
@@ -95,11 +66,6 @@
                     android:textAllCaps="false"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/btnChange"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:ignore="HardcodedText,RtlSymmetry"
                     android:layout_marginBottom="20dp"/>
                 <Button
                     android:id="@+id/btnHistoryBookings"
@@ -117,11 +83,6 @@
                     android:textAllCaps="false"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/btnChange"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:ignore="HardcodedText,RtlSymmetry"
                     android:layout_marginBottom="20dp"/>
 
                 <Button
@@ -140,12 +101,7 @@
                     android:text="Cập nhật thông tin"
                     android:textAllCaps="false"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/btnChange"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:ignore="HardcodedText,RtlSymmetry" />
+                    android:textStyle="bold"/>
                 <Button
                     android:id="@+id/btnChange"
                     android:layout_width="300dp"
@@ -162,15 +118,7 @@
                     android:text="Đổi mật khẩu"
                     android:textAllCaps="false"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/btnLogout"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:ignore="HardcodedText,RtlSymmetry" />
-
-
-
+                    android:textStyle="bold" />
                 <Button
                     android:id="@+id/btnLogout"
                     android:layout_width="200dp"
@@ -186,11 +134,7 @@
                     android:text="Đăng xuất"
                     android:textAllCaps="false"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:ignore="HardcodedText,RtlSymmetry" />
+                    android:textStyle="bold" />
 
             </LinearLayout>
     </ScrollView>
