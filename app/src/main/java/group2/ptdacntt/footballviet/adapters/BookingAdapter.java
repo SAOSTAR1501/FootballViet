@@ -47,7 +47,6 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_history_booking_stadium_item, parent, false);
         return new ViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull BookingAdapter.ViewHolder holder, int position) {
         BookingStadium bookingStadium = list.get(position);
@@ -67,14 +66,11 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
                                 SpannableString spannableString = new SpannableString(headerBooking);
                                 StyleSpan boldSpan1 = new StyleSpan(Typeface.BOLD);
                                 spannableString.setSpan(boldSpan1, 0, userFullName.length(), SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE);
-
                                 StyleSpan boldSpan2 = new StyleSpan(Typeface.BOLD);
                                 spannableString.setSpan(boldSpan2, userFullName.length() + 7, headerBooking.length(), SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE);
-
                                 holder.txtHeader.setText(spannableString);
                             }
                         }
-
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
 
@@ -127,7 +123,6 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
                                             FirebaseDatabase.getInstance().getReference("users").child(owner).child("stadiums").child(bookingStadium.getStadiumId()).child("bookings").child(bookingStadium.getDateBooking()).child(bookingStadium.getStadiumId()).child("active").setValue("false");
                                         }
                                     }
-
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError error) {
 
@@ -143,7 +138,6 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
                                 dialog.dismiss(); // Đóng dialog
                             }
                         });
-
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }

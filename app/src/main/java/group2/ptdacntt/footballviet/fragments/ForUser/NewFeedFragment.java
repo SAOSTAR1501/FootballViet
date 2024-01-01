@@ -51,7 +51,7 @@ import group2.ptdacntt.footballviet.adapters.NewFeedAdapter;
  * Use the {@link NewFeedFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NewFeedFragment extends Fragment {
+public class NewFeedFragment extends Fragment implements NewFeedAdapter.ClickMess {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -165,7 +165,7 @@ public class NewFeedFragment extends Fragment {
                     list.add(newFeed);
                 }
                 Collections.reverse(list);
-                adapter=new NewFeedAdapter(list,getContext());
+                adapter=new NewFeedAdapter(list,getContext(),NewFeedFragment.this);
                 rcv.setAdapter(adapter);
             }
             @Override
@@ -173,5 +173,12 @@ public class NewFeedFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onClick(NewFeed newFeed) {
+        Bundle bundle=new Bundle();
+        bundle.putString("user_id", newFeed.getEmail());
+        navController.navigate(R.id.action_newFeedFragment_to_chatActivity,bundle);
     }
 }

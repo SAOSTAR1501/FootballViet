@@ -120,6 +120,23 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
                 <Button
+                    android:id="@+id/btnMess"
+                    android:layout_width="300dp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/round_background"
+                    android:backgroundTint="@color/white"
+                    android:drawableStart="@drawable/outline_lock_24"
+                    android:drawablePadding="20dp"
+                    android:elevation="0dp"
+                    android:gravity="left|center"
+                    android:paddingStart="30dp"
+                    android:text="Tin nhắn"
+                    android:textAllCaps="false"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <Button
                     android:id="@+id/btnLogout"
                     android:layout_width="200dp"
                     android:layout_height="@dimen/_50sdp"

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llUserChat"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/_5sdp"
+    android:background="@color/white"
+    android:layout_height="@dimen/_35sdp">
+    <ImageView
+        android:id="@+id/imgUserChat"
+        android:src="@color/black"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="match_parent"/>
+    <TextView
+        android:text="buiduclkuong@mgisal.cvihv"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/_13sdp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:id="@+id/tvUserNameChat"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"/>
+</LinearLayout>
