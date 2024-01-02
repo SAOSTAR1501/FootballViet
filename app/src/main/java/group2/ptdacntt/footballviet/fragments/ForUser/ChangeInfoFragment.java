@@ -148,7 +148,11 @@ public class ChangeInfoFragment extends Fragment {
                     edtFullName.setText(user1.getFullName());
                     edtPhone.setText(user1.getPhoneNumber());
                     edtDiaChi.setText(user1.getAddress());
-                    Glide.with(getContext()).load(user1.getProfileImage()).into(userImage);
+                    if(user1.getProfileImage()!=null){
+                        Glide.with(getContext()).load(user1.getProfileImage()).into(userImage);
+                    }else{
+                        userImage.setImageResource(R.drawable.user);
+                    }
                 }
             }
 

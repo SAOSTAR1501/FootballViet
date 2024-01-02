@@ -70,7 +70,11 @@ public class UserFragment extends Fragment {
                         if (userProfile != null) {
                             txtFullName.setText(userProfile.getFullName());
                             txtEmail.setText(userProfile.getEmail());
-                            Glide.with(getContext()).load(userProfile.getProfileImage()).into(profile_image2);
+                            if(userProfile.getProfileImage()!=null){
+                                Glide.with(getContext()).load(userProfile.getProfileImage()).into(profile_image2);
+                            }else{
+                                profile_image2.setImageResource(R.drawable.user);
+                            }
                         }
                     }
                 }
