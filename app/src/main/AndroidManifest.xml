@@ -18,9 +18,6 @@
             android:name=".fragments.ChatActivity"
             android:exported="false" />
         <activity
-            android:name=".Administrator.Dashboard_Host"
-            android:exported="false"></activity>
-        <activity
             android:name=".HostStadiumActivity.Dashboard_Host_Stadium"
             android:exported="false"></activity>
         <activity

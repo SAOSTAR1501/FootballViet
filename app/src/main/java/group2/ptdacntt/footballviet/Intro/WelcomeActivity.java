@@ -133,8 +133,8 @@ public class WelcomeActivity extends AppCompatActivity {
                 }
             });
         }else{
-            Intent intent=new Intent(WelcomeActivity.this, Login.class);
-            startActivity(intent);
+//            Intent intent=new Intent(WelcomeActivity.this, Login.class);
+//            startActivity(intent);
         }
     }
 
