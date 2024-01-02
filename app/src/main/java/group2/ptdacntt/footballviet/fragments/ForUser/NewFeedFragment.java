@@ -176,6 +176,7 @@ public class NewFeedFragment extends Fragment implements NewFeedAdapter.ClickMes
     @Override
     public boolean onQueryTextChange(String newText) {
         List<NewFeed> filteredNewfeeds = filterNewfeeds(list, newText);
+        if(filteredNewfeeds==null) return false;
         adapter.setList(filteredNewfeeds);
         return true;
     }

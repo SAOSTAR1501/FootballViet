@@ -114,9 +114,6 @@ public class StadiumFragment extends Fragment implements IClick, SearchView.OnQu
         rcv = view.findViewById(R.id.rcvNewStadium);
         btnPost = view.findViewById(R.id.btnAddStadium);
 
-        searchView = view.findViewById(R.id.svStadiums);
-        searchView.setOnQueryTextListener(this);
-
         imgBtnMes = view.findViewById(R.id.imgBtnMes);
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference();
@@ -172,6 +169,10 @@ public class StadiumFragment extends Fragment implements IClick, SearchView.OnQu
 
             }
         });
+
+
+        searchView = view.findViewById(R.id.svStadiums);
+        searchView.setOnQueryTextListener(this);
         imgBtnMes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -201,19 +202,26 @@ public class StadiumFragment extends Fragment implements IClick, SearchView.OnQu
     @Override
     public boolean onQueryTextChange(String newText) {
         List<Stadium> filteredStadiums = filterStadiums(list, newText);
-        adapter.setList(filteredStadiums);
-        return true;
+
+        if (filteredStadiums != null&&adapter != null) {
+            adapter.setList(filteredStadiums);
+            return true;
+        }
+        return false;
     }
 
     private List<Stadium> filterStadiums(List<Stadium> stadiums, String query) {
         query = query.toLowerCase(Locale.getDefault());
         List<Stadium> filteredList = new ArrayList<>();
-        for (Stadium stadium : stadiums) {
-            // Thực hiện kiểm tra theo tên sân hoặc tên đội
-            if (stadium.getStadiumName().toLowerCase(Locale.getDefault()).contains(query) ||
-                    stadium.getAddress().toLowerCase(Locale.getDefault()).contains(query)) {
-                filteredList.add(stadium);
+        if (stadiums != null) {
+            for (Stadium stadium : stadiums) {
+                // Thực hiện kiểm tra theo tên sân hoặc tên đội
+                if (stadium.getStadiumName().toLowerCase(Locale.getDefault()).contains(query) ||
+                        stadium.getAddress().toLowerCase(Locale.getDefault()).contains(query)) {
+                    filteredList.add(stadium);
+                }
             }
+
         }
         return filteredList;
     }

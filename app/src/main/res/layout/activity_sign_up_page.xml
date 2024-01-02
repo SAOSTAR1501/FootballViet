@@ -28,44 +28,60 @@
             <EditText
                 android:id="@+id/edtEmail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_40sdp"
                 android:textSize="22sp"
                 android:hint="Email"
                 android:layout_marginTop="20dp"
                 android:paddingLeft="20dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/edittext_background"
+                android:gravity="left|center"
+                android:paddingStart="@dimen/_10sdp"
+                android:textColor="@color/black"/>
             <EditText
                 android:id="@+id/edtFullName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_40sdp"
                 android:textSize="22sp"
                 android:hint="Họ tên"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="20dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/edittext_background"
+                android:gravity="left|center"
+                android:paddingStart="@dimen/_10sdp"
+                android:textColor="@color/black"/>
 
             <EditText
                 android:id="@+id/edtAddress"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_40sdp"
                 android:textSize="22sp"
                 android:hint="Địa chỉ"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="20dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/edittext_background"
+                android:gravity="left|center"
+                android:paddingStart="@dimen/_10sdp"
+                android:textColor="@color/black"/>
             <EditText
                 android:id="@+id/edtPhoneNumber"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_40sdp"
                 android:textSize="22sp"
                 android:hint="Điện thoại"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="20dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/edittext_background"
+                android:gravity="left|center"
+                android:paddingStart="@dimen/_10sdp"
+                android:textColor="@color/black"/>
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -97,34 +113,46 @@
             <EditText
                 android:id="@+id/edtUsername"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_40sdp"
                 android:hint="Username"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:paddingLeft="20dp"
-                android:textSize="22sp"/>
+                android:textSize="22sp"
+                android:background="@drawable/edittext_background"
+                android:gravity="left|center"
+                android:paddingStart="@dimen/_10sdp"
+                android:textColor="@color/black"/>
             <EditText
                 android:id="@+id/edtPassword"
                 android:inputType="textPassword"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_40sdp"
                 android:textSize="22sp"
                 android:hint="Mật khẩu"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="20dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/edittext_background"
+                android:gravity="left|center"
+                android:paddingStart="@dimen/_10sdp"
+                android:textColor="@color/black"/>
             <EditText
                 android:id="@+id/edtConfirmPassword"
                 android:inputType="textPassword"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_40sdp"
                 android:textSize="22sp"
                 android:hint="Nhập lại mật khẩu"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="20dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/edittext_background"
+                android:gravity="left|center"
+                android:paddingStart="@dimen/_10sdp"
+                android:textColor="@color/black"/>
 
             <Button
                 android:id="@+id/btnSignUp"
