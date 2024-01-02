@@ -105,6 +105,7 @@
                 android:textSize="22sp"/>
             <EditText
                 android:id="@+id/edtPassword"
+                android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="22sp"
@@ -115,6 +116,7 @@
                 android:layout_marginLeft="10dp"/>
             <EditText
                 android:id="@+id/edtConfirmPassword"
+                android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="22sp"

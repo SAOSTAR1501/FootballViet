@@ -46,7 +46,6 @@ public class UserChatAdapter extends RecyclerView.Adapter<UserChatAdapter.UserCh
             }
         });
     }
-
     @Override
     public int getItemCount() {
         if(list==null){

@@ -93,7 +93,7 @@ public class SignUp extends AppCompatActivity {
 
     private void saveUserInfoToFirebase(String userId, String email, String password, String username, String fullName, String address, String role, String phoneNumber) {
         // Tạo đối tượng User
-        User user = new User(userId, email, password, username,fullName, address, role, phoneNumber);
+        User user = new User(userId, email, password, username,fullName, address, role, phoneNumber,null);
         usersRef.child(userId).setValue(user)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

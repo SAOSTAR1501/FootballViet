@@ -9,10 +9,10 @@ public class User {
     private String address;
     private String role;
     private String phoneNumber;
-    private String profileimage;
+    private String profileImage;
 
 
-    public User(String userId, String email, String password, String username, String fullName, String address, String role, String phoneNumber) {
+    public User(String userId, String email, String password, String username, String fullName, String address, String role, String phoneNumber, String profileImage) {
         this.userId = userId;
         this.email = email;
         this.password = password;
@@ -21,9 +21,16 @@ public class User {
         this.address = address;
         this.role = role;
         this.phoneNumber = phoneNumber;
+        this.profileImage = profileImage;
     }
 
+    public String getProfileImage() {
+        return profileImage;
+    }
 
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
+    }
 
     public User() {
     }
@@ -92,11 +99,4 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getProfileimage() {
-        return profileimage;
-    }
-
-    public void setProfileimage(String profileimage) {
-        this.profileimage = profileimage;
-    }
 }

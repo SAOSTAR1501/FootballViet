@@ -2,10 +2,12 @@ package group2.ptdacntt.footballviet.fragments.ForUser;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -32,6 +35,7 @@ public class UserFragment extends Fragment {
     NavController navController;
     TextView txtFullName;
     TextView txtEmail;
+    ImageView profile_image2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,12 +56,12 @@ public class UserFragment extends Fragment {
         txtFullName = view.findViewById(R.id.textInputLayout);
         txtEmail = view.findViewById(R.id.userEmail);
         btnMess=view.findViewById(R.id.btnMess);
+        profile_image2=view.findViewById(R.id.profile_image2);
         navController = NavHostFragment.findNavController(UserFragment.this);
 
         if (user != null) {
-
             DatabaseReference userRef = databaseReference.child("users").child(user.getUid());
-            userRef.addValueEventListener(new ValueEventListener() {
+            userRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if (snapshot.exists()) {
@@ -66,6 +70,7 @@ public class UserFragment extends Fragment {
                         if (userProfile != null) {
                             txtFullName.setText(userProfile.getFullName());
                             txtEmail.setText(userProfile.getEmail());
+                            Glide.with(getContext()).load(userProfile.getProfileImage()).into(profile_image2);
                         }
                     }
                 }
