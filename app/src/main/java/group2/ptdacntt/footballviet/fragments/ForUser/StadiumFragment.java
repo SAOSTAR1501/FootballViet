@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -15,6 +16,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,6 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import group2.ptdacntt.footballviet.Interfaces.IClick;
 import group2.ptdacntt.footballviet.Interfaces.ImageClickListener;
@@ -42,7 +46,7 @@ import group2.ptdacntt.footballviet.adapters.NewStadiumAdapter;
  * Use the {@link StadiumFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class StadiumFragment extends Fragment implements IClick {
+public class StadiumFragment extends Fragment implements IClick, SearchView.OnQueryTextListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -62,6 +66,8 @@ public class StadiumFragment extends Fragment implements IClick {
     FirebaseUser user;
     FirebaseDatabase database;
     DatabaseReference databaseReference;
+    SearchView searchView;
+    ImageView imgBtnMes;
 
     public StadiumFragment() {
         // Required empty public constructor
@@ -107,6 +113,11 @@ public class StadiumFragment extends Fragment implements IClick {
         navController= NavHostFragment.findNavController(StadiumFragment.this);
         rcv = view.findViewById(R.id.rcvNewStadium);
         btnPost = view.findViewById(R.id.btnAddStadium);
+
+        searchView = view.findViewById(R.id.svStadiums);
+        searchView.setOnQueryTextListener(this);
+
+        imgBtnMes = view.findViewById(R.id.imgBtnMes);
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference();
         auth = FirebaseAuth.getInstance();
@@ -161,6 +172,12 @@ public class StadiumFragment extends Fragment implements IClick {
 
             }
         });
+        imgBtnMes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.action_manageStadiums2_to_userChatFragment);
+            }
+        });
     }
 
     @Override
@@ -176,4 +193,28 @@ public class StadiumFragment extends Fragment implements IClick {
 
     }
 
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        List<Stadium> filteredStadiums = filterStadiums(list, newText);
+        adapter.setList(filteredStadiums);
+        return true;
+    }
+
+    private List<Stadium> filterStadiums(List<Stadium> stadiums, String query) {
+        query = query.toLowerCase(Locale.getDefault());
+        List<Stadium> filteredList = new ArrayList<>();
+        for (Stadium stadium : stadiums) {
+            // Thực hiện kiểm tra theo tên sân hoặc tên đội
+            if (stadium.getStadiumName().toLowerCase(Locale.getDefault()).contains(query) ||
+                    stadium.getAddress().toLowerCase(Locale.getDefault()).contains(query)) {
+                filteredList.add(stadium);
+            }
+        }
+        return filteredList;
+    }
 }

@@ -81,6 +81,9 @@
         <action
             android:id="@+id/action_manageStadiums2_to_orderStadiumFragment"
             app:destination="@id/orderStadiumFragment" />
+        <action
+            android:id="@+id/action_manageStadiums2_to_userChatFragment"
+            app:destination="@id/userChatFragment" />
     </fragment>
     <fragment
         android:id="@+id/newStadiumFragment"

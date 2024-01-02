@@ -3,13 +3,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.ForUser.NewFeedFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcvNewFeed"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/svStadiums"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_weight="10"
+                android:background="@drawable/shapebgsearcg"
+                android:iconifiedByDefault="false"
+                android:queryHint="Tìm kiếm sân"
+                app:queryBackground="@null" />
+            <ImageButton
+                android:id="@+id/imgBtnMes"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/icon_mess"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:layout_marginRight="10dp"/>
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvNewFeed"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+    <!-- TODO: Update blank fragment layout -->
+
     <Button
         android:id="@+id/btnPost"
         android:textSize="@dimen/_30sdp"

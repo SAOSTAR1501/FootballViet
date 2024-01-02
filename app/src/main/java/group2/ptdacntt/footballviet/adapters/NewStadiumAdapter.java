@@ -32,6 +32,11 @@ public class NewStadiumAdapter extends RecyclerView.Adapter<NewStadiumAdapter.Vi
     Context context;
     IClick iClick;
 
+    public void setList(List<Stadium> list) {
+        this.list = list;
+        notifyDataSetChanged();
+    }
+
     public NewStadiumAdapter(List<Stadium> list, Context context, IClick iClick) {
         this.list = list;
         this.context = context;

@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -41,8 +42,10 @@ import com.google.firebase.storage.UploadTask;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import group2.ptdacntt.footballviet.Models.NewFeed;
+import group2.ptdacntt.footballviet.Models.Stadium;
 import group2.ptdacntt.footballviet.R;
 import group2.ptdacntt.footballviet.adapters.NewFeedAdapter;
 
@@ -51,7 +54,7 @@ import group2.ptdacntt.footballviet.adapters.NewFeedAdapter;
  * Use the {@link NewFeedFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NewFeedFragment extends Fragment implements NewFeedAdapter.ClickMess {
+public class NewFeedFragment extends Fragment implements NewFeedAdapter.ClickMess, SearchView.OnQueryTextListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -69,6 +72,9 @@ public class NewFeedFragment extends Fragment implements NewFeedAdapter.ClickMes
     NewFeedAdapter adapter;
     FirebaseAuth auth;
     FirebaseUser user;
+
+    SearchView searchView;
+    ImageView imgBtnMes;
 
     public NewFeedFragment() {
         // Required empty public constructor
@@ -124,38 +130,7 @@ public class NewFeedFragment extends Fragment implements NewFeedAdapter.ClickMes
         });
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         rcv.setLayoutManager(linearLayoutManager);
-//        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users");
-//        userRef.addValueEventListener(new ValueEventListener() {
-//
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot usersSnapshot) {
-//                list = new ArrayList<>();
-//                for (DataSnapshot userSnapshot: usersSnapshot.getChildren()) {
-//                    String userId = userSnapshot.getKey();
-//                    DatabaseReference postsRef = FirebaseDatabase.getInstance().getReference("posts");
-//                    postsRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot postsSnapshot) {
-//                            for(DataSnapshot postSnapshot: postsSnapshot.getChildren())  {
-//                                NewFeed newFeed=postSnapshot.getValue(NewFeed.class);
-//                                list.add(newFeed);
-//                            }
-//                            adapter=new NewFeedAdapter(list,getContext());
-//                            rcv.setAdapter(adapter);
-//                        }
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError error) {
-//
-//                        }
-//                    });
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+
         FirebaseDatabase.getInstance().getReference("posts").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -165,12 +140,23 @@ public class NewFeedFragment extends Fragment implements NewFeedAdapter.ClickMes
                     list.add(newFeed);
                 }
                 Collections.reverse(list);
-                adapter=new NewFeedAdapter(list,getContext(),NewFeedFragment.this);
+                adapter=new NewFeedAdapter(list,getContext(),NewFeedFragment.this, user.getUid());
                 rcv.setAdapter(adapter);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        searchView = view.findViewById(R.id.svStadiums);
+        searchView.setOnQueryTextListener(this);
+
+        imgBtnMes = view.findViewById(R.id.imgBtnMes);
+        imgBtnMes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.action_newFeedFragment_to_userChatFragment);
             }
         });
     }
@@ -180,5 +166,31 @@ public class NewFeedFragment extends Fragment implements NewFeedAdapter.ClickMes
         Bundle bundle=new Bundle();
         bundle.putString("user_id", newFeed.getEmail());
         navController.navigate(R.id.action_newFeedFragment_to_chatActivity,bundle);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        List<NewFeed> filteredNewfeeds = filterNewfeeds(list, newText);
+        adapter.setList(filteredNewfeeds);
+        return true;
+    }
+
+    private List<NewFeed> filterNewfeeds(List<NewFeed> newFeeds, String query) {
+        query = query.toLowerCase(Locale.getDefault());
+        List<NewFeed> filteredList = new ArrayList<>();
+        for (NewFeed newFeed : newFeeds) {
+            // Thực hiện kiểm tra theo tên sân hoặc tên đội
+            if (newFeed.getSan().toLowerCase(Locale.getDefault()).contains(query) ||
+                    newFeed.getContent().toLowerCase(Locale.getDefault()).contains(query) ||
+                    newFeed.getName().toLowerCase(Locale.getDefault()).contains(query)) {
+                filteredList.add(newFeed);
+            }
+        }
+        return filteredList;
     }
 }

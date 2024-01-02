@@ -31,11 +31,18 @@ public class NewFeedAdapter extends RecyclerView.Adapter<NewFeedAdapter.ViewHold
     List<NewFeed> list;
     Context context;
     ClickMess clickMess;
+    String email;
 
-    public NewFeedAdapter(List<NewFeed> list, Context context, ClickMess clickMess) {
+    public NewFeedAdapter(List<NewFeed> list, Context context, ClickMess clickMess, String email) {
         this.list = list;
         this.context = context;
-        this.clickMess=clickMess;
+        this.clickMess = clickMess;
+        this.email = email;
+    }
+
+    public void setList(List<NewFeed> list) {
+        this.list = list;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -67,12 +74,19 @@ public class NewFeedAdapter extends RecyclerView.Adapter<NewFeedAdapter.ViewHold
         holder.tvGio.setText(newFeed.getGio());
         holder.tvNoiDung.setText(newFeed.getContent());
         Glide.with(context).load(newFeed.getImage()).into(holder.img);
-        holder.btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickMess.onClick(list.get(position));
-            }
-        });
+
+        if(this.email.equals(newFeed.getEmail())) {
+            holder.btn.setVisibility(View.GONE);
+        } else {
+            holder.btn.setVisibility(View.VISIBLE);
+            holder.btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    clickMess.onClick(list.get(position));
+                }
+            });
+        }
+
     }
 
     @Override

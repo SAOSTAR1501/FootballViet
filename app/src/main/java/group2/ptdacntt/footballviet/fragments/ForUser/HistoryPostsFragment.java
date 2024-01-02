@@ -117,7 +117,7 @@ public class HistoryPostsFragment extends Fragment implements NewFeedAdapter.Cli
                     list.add(newFeed);
                 }
                 Collections.reverse(list);
-                adapter=new NewFeedAdapter(list,getContext(),HistoryPostsFragment.this);
+                adapter=new NewFeedAdapter(list,getContext(),HistoryPostsFragment.this, user.getUid());
                 rcv.setAdapter(adapter);
             }
             @Override
